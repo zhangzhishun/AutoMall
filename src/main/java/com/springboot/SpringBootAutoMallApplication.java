@@ -11,6 +11,7 @@ import java.util.Locale;
 
 /**
  * 扫描mapper 启动类
+ *
  * */
 @MapperScan("com.springboot.dao")
 @SpringBootApplication
