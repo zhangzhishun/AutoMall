@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.InternalDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Internal">
+    <id column="IID" jdbcType="INTEGER" property="iid" />
+    <result column="ISWmaterial" jdbcType="VARCHAR" property="iswmaterial" />
+    <result column="ISWadjust" jdbcType="VARCHAR" property="iswadjust" />
+    <result column="IMultifuncSW" jdbcType="VARCHAR" property="imultifuncsw" />
+    <result column="ISWshift" jdbcType="VARCHAR" property="iswshift" />
+    <result column="ISWheating" jdbcType="VARCHAR" property="iswheating" />
+    <result column="ISWmemory" jdbcType="VARCHAR" property="iswmemory" />
+    <result column="IDrivingcomputerdisplayscreen" jdbcType="VARCHAR" property="idrivingcomputerdisplayscreen" />
+    <result column="IFullLCDinstrumentpanel" jdbcType="VARCHAR" property="ifulllcdinstrumentpanel" />
+    <result column="ILiquidcrystalinstrumentsize" jdbcType="VARCHAR" property="iliquidcrystalinstrumentsize" />
+    <result column="IHBUhead-updigitaldisplay" jdbcType="VARCHAR" property="ihbuheadUpdigitaldisplay" />
+    <result column="IBuilt-incarrecorder" jdbcType="VARCHAR" property="ibuiltIncarrecorder" />
+    <result column="IActivenoisecontrol" jdbcType="VARCHAR" property="iactivenoisecontrol" />
+    <result column="IWirelesschargingofmobilephone" jdbcType="VARCHAR" property="iwirelesschargingofmobilephone" />
+    <result column="IElectricadjustablepedal" jdbcType="VARCHAR" property="ielectricadjustablepedal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    IID, ISWmaterial, ISWadjust, IMultifuncSW, ISWshift, ISWheating, ISWmemory, IDrivingcomputerdisplayscreen, 
+    IFullLCDinstrumentpanel, ILiquidcrystalinstrumentsize, IHBUhead-updigitaldisplay, 
+    IBuilt-incarrecorder, IActivenoisecontrol, IWirelesschargingofmobilephone, IElectricadjustablepedal
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from internal
+    where IID = #{iid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from internal
+    where IID = #{iid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="IID" keyProperty="iid" parameterType="com.springboot.entity.Internal" useGeneratedKeys="true">
+    insert into internal (ISWmaterial, ISWadjust, IMultifuncSW, 
+      ISWshift, ISWheating, ISWmemory, 
+      IDrivingcomputerdisplayscreen, IFullLCDinstrumentpanel, 
+      ILiquidcrystalinstrumentsize, IHBUhead-updigitaldisplay, 
+      IBuilt-incarrecorder, IActivenoisecontrol, 
+      IWirelesschargingofmobilephone, IElectricadjustablepedal
+      )
+    values (#{iswmaterial,jdbcType=VARCHAR}, #{iswadjust,jdbcType=VARCHAR}, #{imultifuncsw,jdbcType=VARCHAR}, 
+      #{iswshift,jdbcType=VARCHAR}, #{iswheating,jdbcType=VARCHAR}, #{iswmemory,jdbcType=VARCHAR}, 
+      #{idrivingcomputerdisplayscreen,jdbcType=VARCHAR}, #{ifulllcdinstrumentpanel,jdbcType=VARCHAR}, 
+      #{iliquidcrystalinstrumentsize,jdbcType=VARCHAR}, #{ihbuheadUpdigitaldisplay,jdbcType=VARCHAR}, 
+      #{ibuiltIncarrecorder,jdbcType=VARCHAR}, #{iactivenoisecontrol,jdbcType=VARCHAR}, 
+      #{iwirelesschargingofmobilephone,jdbcType=VARCHAR}, #{ielectricadjustablepedal,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="IID" keyProperty="iid" parameterType="com.springboot.entity.Internal" useGeneratedKeys="true">
+    insert into internal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="iswmaterial != null">
+        ISWmaterial,
+      </if>
+      <if test="iswadjust != null">
+        ISWadjust,
+      </if>
+      <if test="imultifuncsw != null">
+        IMultifuncSW,
+      </if>
+      <if test="iswshift != null">
+        ISWshift,
+      </if>
+      <if test="iswheating != null">
+        ISWheating,
+      </if>
+      <if test="iswmemory != null">
+        ISWmemory,
+      </if>
+      <if test="idrivingcomputerdisplayscreen != null">
+        IDrivingcomputerdisplayscreen,
+      </if>
+      <if test="ifulllcdinstrumentpanel != null">
+        IFullLCDinstrumentpanel,
+      </if>
+      <if test="iliquidcrystalinstrumentsize != null">
+        ILiquidcrystalinstrumentsize,
+      </if>
+      <if test="ihbuheadUpdigitaldisplay != null">
+        IHBUhead-updigitaldisplay,
+      </if>
+      <if test="ibuiltIncarrecorder != null">
+        IBuilt-incarrecorder,
+      </if>
+      <if test="iactivenoisecontrol != null">
+        IActivenoisecontrol,
+      </if>
+      <if test="iwirelesschargingofmobilephone != null">
+        IWirelesschargingofmobilephone,
+      </if>
+      <if test="ielectricadjustablepedal != null">
+        IElectricadjustablepedal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="iswmaterial != null">
+        #{iswmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="iswadjust != null">
+        #{iswadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="imultifuncsw != null">
+        #{imultifuncsw,jdbcType=VARCHAR},
+      </if>
+      <if test="iswshift != null">
+        #{iswshift,jdbcType=VARCHAR},
+      </if>
+      <if test="iswheating != null">
+        #{iswheating,jdbcType=VARCHAR},
+      </if>
+      <if test="iswmemory != null">
+        #{iswmemory,jdbcType=VARCHAR},
+      </if>
+      <if test="idrivingcomputerdisplayscreen != null">
+        #{idrivingcomputerdisplayscreen,jdbcType=VARCHAR},
+      </if>
+      <if test="ifulllcdinstrumentpanel != null">
+        #{ifulllcdinstrumentpanel,jdbcType=VARCHAR},
+      </if>
+      <if test="iliquidcrystalinstrumentsize != null">
+        #{iliquidcrystalinstrumentsize,jdbcType=VARCHAR},
+      </if>
+      <if test="ihbuheadUpdigitaldisplay != null">
+        #{ihbuheadUpdigitaldisplay,jdbcType=VARCHAR},
+      </if>
+      <if test="ibuiltIncarrecorder != null">
+        #{ibuiltIncarrecorder,jdbcType=VARCHAR},
+      </if>
+      <if test="iactivenoisecontrol != null">
+        #{iactivenoisecontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="iwirelesschargingofmobilephone != null">
+        #{iwirelesschargingofmobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="ielectricadjustablepedal != null">
+        #{ielectricadjustablepedal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Internal">
+    update internal
+    <set>
+      <if test="iswmaterial != null">
+        ISWmaterial = #{iswmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="iswadjust != null">
+        ISWadjust = #{iswadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="imultifuncsw != null">
+        IMultifuncSW = #{imultifuncsw,jdbcType=VARCHAR},
+      </if>
+      <if test="iswshift != null">
+        ISWshift = #{iswshift,jdbcType=VARCHAR},
+      </if>
+      <if test="iswheating != null">
+        ISWheating = #{iswheating,jdbcType=VARCHAR},
+      </if>
+      <if test="iswmemory != null">
+        ISWmemory = #{iswmemory,jdbcType=VARCHAR},
+      </if>
+      <if test="idrivingcomputerdisplayscreen != null">
+        IDrivingcomputerdisplayscreen = #{idrivingcomputerdisplayscreen,jdbcType=VARCHAR},
+      </if>
+      <if test="ifulllcdinstrumentpanel != null">
+        IFullLCDinstrumentpanel = #{ifulllcdinstrumentpanel,jdbcType=VARCHAR},
+      </if>
+      <if test="iliquidcrystalinstrumentsize != null">
+        ILiquidcrystalinstrumentsize = #{iliquidcrystalinstrumentsize,jdbcType=VARCHAR},
+      </if>
+      <if test="ihbuheadUpdigitaldisplay != null">
+        IHBUhead-updigitaldisplay = #{ihbuheadUpdigitaldisplay,jdbcType=VARCHAR},
+      </if>
+      <if test="ibuiltIncarrecorder != null">
+        IBuilt-incarrecorder = #{ibuiltIncarrecorder,jdbcType=VARCHAR},
+      </if>
+      <if test="iactivenoisecontrol != null">
+        IActivenoisecontrol = #{iactivenoisecontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="iwirelesschargingofmobilephone != null">
+        IWirelesschargingofmobilephone = #{iwirelesschargingofmobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="ielectricadjustablepedal != null">
+        IElectricadjustablepedal = #{ielectricadjustablepedal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where IID = #{iid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Internal">
+    update internal
+    set ISWmaterial = #{iswmaterial,jdbcType=VARCHAR},
+      ISWadjust = #{iswadjust,jdbcType=VARCHAR},
+      IMultifuncSW = #{imultifuncsw,jdbcType=VARCHAR},
+      ISWshift = #{iswshift,jdbcType=VARCHAR},
+      ISWheating = #{iswheating,jdbcType=VARCHAR},
+      ISWmemory = #{iswmemory,jdbcType=VARCHAR},
+      IDrivingcomputerdisplayscreen = #{idrivingcomputerdisplayscreen,jdbcType=VARCHAR},
+      IFullLCDinstrumentpanel = #{ifulllcdinstrumentpanel,jdbcType=VARCHAR},
+      ILiquidcrystalinstrumentsize = #{iliquidcrystalinstrumentsize,jdbcType=VARCHAR},
+      IHBUhead-updigitaldisplay = #{ihbuheadUpdigitaldisplay,jdbcType=VARCHAR},
+      IBuilt-incarrecorder = #{ibuiltIncarrecorder,jdbcType=VARCHAR},
+      IActivenoisecontrol = #{iactivenoisecontrol,jdbcType=VARCHAR},
+      IWirelesschargingofmobilephone = #{iwirelesschargingofmobilephone,jdbcType=VARCHAR},
+      IElectricadjustablepedal = #{ielectricadjustablepedal,jdbcType=VARCHAR}
+    where IID = #{iid,jdbcType=INTEGER}
+  </update>
+</mapper>

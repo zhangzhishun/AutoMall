@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.ChassissteeringDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Chassissteering">
+    <id column="CSID" jdbcType="INTEGER" property="csid" />
+    <result column="CSDriveType" jdbcType="VARCHAR" property="csdrivetype" />
+    <result column="CSFourDriveType" jdbcType="VARCHAR" property="csfourdrivetype" />
+    <result column="CSCentralDifferentialLockStructure" jdbcType="VARCHAR" property="cscentraldifferentiallockstructure" />
+    <result column="CSFrontSuspension" jdbcType="VARCHAR" property="csfrontsuspension" />
+    <result column="CSRearSuspension" jdbcType="VARCHAR" property="csrearsuspension" />
+    <result column="CSAssistanceType" jdbcType="VARCHAR" property="csassistancetype" />
+    <result column="CSCarBodyStructure" jdbcType="VARCHAR" property="cscarbodystructure" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CSID, CSDriveType, CSFourDriveType, CSCentralDifferentialLockStructure, CSFrontSuspension, 
+    CSRearSuspension, CSAssistanceType, CSCarBodyStructure
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from chassissteering
+    where CSID = #{csid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from chassissteering
+    where CSID = #{csid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="CSID" keyProperty="csid" parameterType="com.springboot.entity.Chassissteering" useGeneratedKeys="true">
+    insert into chassissteering (CSDriveType, CSFourDriveType, CSCentralDifferentialLockStructure, 
+      CSFrontSuspension, CSRearSuspension, CSAssistanceType, 
+      CSCarBodyStructure)
+    values (#{csdrivetype,jdbcType=VARCHAR}, #{csfourdrivetype,jdbcType=VARCHAR}, #{cscentraldifferentiallockstructure,jdbcType=VARCHAR}, 
+      #{csfrontsuspension,jdbcType=VARCHAR}, #{csrearsuspension,jdbcType=VARCHAR}, #{csassistancetype,jdbcType=VARCHAR}, 
+      #{cscarbodystructure,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="CSID" keyProperty="csid" parameterType="com.springboot.entity.Chassissteering" useGeneratedKeys="true">
+    insert into chassissteering
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="csdrivetype != null">
+        CSDriveType,
+      </if>
+      <if test="csfourdrivetype != null">
+        CSFourDriveType,
+      </if>
+      <if test="cscentraldifferentiallockstructure != null">
+        CSCentralDifferentialLockStructure,
+      </if>
+      <if test="csfrontsuspension != null">
+        CSFrontSuspension,
+      </if>
+      <if test="csrearsuspension != null">
+        CSRearSuspension,
+      </if>
+      <if test="csassistancetype != null">
+        CSAssistanceType,
+      </if>
+      <if test="cscarbodystructure != null">
+        CSCarBodyStructure,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="csdrivetype != null">
+        #{csdrivetype,jdbcType=VARCHAR},
+      </if>
+      <if test="csfourdrivetype != null">
+        #{csfourdrivetype,jdbcType=VARCHAR},
+      </if>
+      <if test="cscentraldifferentiallockstructure != null">
+        #{cscentraldifferentiallockstructure,jdbcType=VARCHAR},
+      </if>
+      <if test="csfrontsuspension != null">
+        #{csfrontsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="csrearsuspension != null">
+        #{csrearsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="csassistancetype != null">
+        #{csassistancetype,jdbcType=VARCHAR},
+      </if>
+      <if test="cscarbodystructure != null">
+        #{cscarbodystructure,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Chassissteering">
+    update chassissteering
+    <set>
+      <if test="csdrivetype != null">
+        CSDriveType = #{csdrivetype,jdbcType=VARCHAR},
+      </if>
+      <if test="csfourdrivetype != null">
+        CSFourDriveType = #{csfourdrivetype,jdbcType=VARCHAR},
+      </if>
+      <if test="cscentraldifferentiallockstructure != null">
+        CSCentralDifferentialLockStructure = #{cscentraldifferentiallockstructure,jdbcType=VARCHAR},
+      </if>
+      <if test="csfrontsuspension != null">
+        CSFrontSuspension = #{csfrontsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="csrearsuspension != null">
+        CSRearSuspension = #{csrearsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="csassistancetype != null">
+        CSAssistanceType = #{csassistancetype,jdbcType=VARCHAR},
+      </if>
+      <if test="cscarbodystructure != null">
+        CSCarBodyStructure = #{cscarbodystructure,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CSID = #{csid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Chassissteering">
+    update chassissteering
+    set CSDriveType = #{csdrivetype,jdbcType=VARCHAR},
+      CSFourDriveType = #{csfourdrivetype,jdbcType=VARCHAR},
+      CSCentralDifferentialLockStructure = #{cscentraldifferentiallockstructure,jdbcType=VARCHAR},
+      CSFrontSuspension = #{csfrontsuspension,jdbcType=VARCHAR},
+      CSRearSuspension = #{csrearsuspension,jdbcType=VARCHAR},
+      CSAssistanceType = #{csassistancetype,jdbcType=VARCHAR},
+      CSCarBodyStructure = #{cscarbodystructure,jdbcType=VARCHAR}
+    where CSID = #{csid,jdbcType=INTEGER}
+  </update>
+</mapper>

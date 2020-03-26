@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.ActivepassivesafetydeviceDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Activepassivesafetydevice">
+    <id column="APSDID" jdbcType="INTEGER" property="apsdid" />
+    <result column="APSDairbag" jdbcType="VARCHAR" property="apsdairbag" />
+    <result column="APSDFrontrearairbags" jdbcType="VARCHAR" property="apsdfrontrearairbags" />
+    <result column="APSDFrontrearheadairbag" jdbcType="VARCHAR" property="apsdfrontrearheadairbag" />
+    <result column="APSDKneeAirbag" jdbcType="VARCHAR" property="apsdkneeairbag" />
+    <result column="APSDCopilotcushionairbag" jdbcType="VARCHAR" property="apsdcopilotcushionairbag" />
+    <result column="APSDBackwardbeltairbag" jdbcType="VARCHAR" property="apsdbackwardbeltairbag" />
+    <result column="APSDBackseatantislideairbag" jdbcType="VARCHAR" property="apsdbackseatantislideairbag" />
+    <result column="APSDRearcentreairbag" jdbcType="VARCHAR" property="apsdrearcentreairbag" />
+    <result column="APSDPassivepedestrianprotection" jdbcType="VARCHAR" property="apsdpassivepedestrianprotection" />
+    <result column="APSDTirepressuremonitoringfunction" jdbcType="VARCHAR" property="apsdtirepressuremonitoringfunction" />
+    <result column="APSDZerotirepressuredriving" jdbcType="VARCHAR" property="apsdzerotirepressuredriving" />
+    <result column="APSDSafetybeltnotwornreminder" jdbcType="VARCHAR" property="apsdsafetybeltnotwornreminder" />
+    <result column="APSDISOFIXChildseatinterface" jdbcType="VARCHAR" property="apsdisofixchildseatinterface" />
+    <result column="APSDABS" jdbcType="VARCHAR" property="apsdabs" />
+    <result column="APSDBrakeforcedistribution" jdbcType="VARCHAR" property="apsdbrakeforcedistribution" />
+    <result column="APSDBrakeassist" jdbcType="VARCHAR" property="apsdbrakeassist" />
+    <result column="APSDTractioncontrol" jdbcType="VARCHAR" property="apsdtractioncontrol" />
+    <result column="APSDBodystabilitycontrol" jdbcType="VARCHAR" property="apsdbodystabilitycontrol" />
+    <result column="APSDDoublingassistance" jdbcType="VARCHAR" property="apsddoublingassistance" />
+    <result column="APSDLaneDepartureWarning" jdbcType="VARCHAR" property="apsdlanedeparturewarning" />
+    <result column="APSDLanekeepingassist" jdbcType="VARCHAR" property="apsdlanekeepingassist" />
+    <result column="APSDIdentificationroadtrafficsigns" jdbcType="VARCHAR" property="apsdidentificationroadtrafficsigns" />
+    <result column="APSDActivebrakesystem" jdbcType="VARCHAR" property="apsdactivebrakesystem" />
+    <result column="APSDNightvisionsystem" jdbcType="VARCHAR" property="apsdnightvisionsystem" />
+    <result column="APSDFatiguedrivingtips" jdbcType="VARCHAR" property="apsdfatiguedrivingtips" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    APSDID, APSDairbag, APSDFrontrearairbags, APSDFrontrearheadairbag, APSDKneeAirbag, 
+    APSDCopilotcushionairbag, APSDBackwardbeltairbag, APSDBackseatantislideairbag, APSDRearcentreairbag, 
+    APSDPassivepedestrianprotection, APSDTirepressuremonitoringfunction, APSDZerotirepressuredriving, 
+    APSDSafetybeltnotwornreminder, APSDISOFIXChildseatinterface, APSDABS, APSDBrakeforcedistribution, 
+    APSDBrakeassist, APSDTractioncontrol, APSDBodystabilitycontrol, APSDDoublingassistance, 
+    APSDLaneDepartureWarning, APSDLanekeepingassist, APSDIdentificationroadtrafficsigns, 
+    APSDActivebrakesystem, APSDNightvisionsystem, APSDFatiguedrivingtips
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from activepassivesafetydevice
+    where APSDID = #{apsdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from activepassivesafetydevice
+    where APSDID = #{apsdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="APSDID" keyProperty="apsdid" parameterType="com.springboot.entity.Activepassivesafetydevice" useGeneratedKeys="true">
+    insert into activepassivesafetydevice (APSDairbag, APSDFrontrearairbags, 
+      APSDFrontrearheadairbag, APSDKneeAirbag, 
+      APSDCopilotcushionairbag, APSDBackwardbeltairbag, 
+      APSDBackseatantislideairbag, APSDRearcentreairbag, 
+      APSDPassivepedestrianprotection, APSDTirepressuremonitoringfunction, 
+      APSDZerotirepressuredriving, APSDSafetybeltnotwornreminder, 
+      APSDISOFIXChildseatinterface, APSDABS, 
+      APSDBrakeforcedistribution, APSDBrakeassist, 
+      APSDTractioncontrol, APSDBodystabilitycontrol, 
+      APSDDoublingassistance, APSDLaneDepartureWarning, 
+      APSDLanekeepingassist, APSDIdentificationroadtrafficsigns, 
+      APSDActivebrakesystem, APSDNightvisionsystem, 
+      APSDFatiguedrivingtips)
+    values (#{apsdairbag,jdbcType=VARCHAR}, #{apsdfrontrearairbags,jdbcType=VARCHAR}, 
+      #{apsdfrontrearheadairbag,jdbcType=VARCHAR}, #{apsdkneeairbag,jdbcType=VARCHAR}, 
+      #{apsdcopilotcushionairbag,jdbcType=VARCHAR}, #{apsdbackwardbeltairbag,jdbcType=VARCHAR}, 
+      #{apsdbackseatantislideairbag,jdbcType=VARCHAR}, #{apsdrearcentreairbag,jdbcType=VARCHAR}, 
+      #{apsdpassivepedestrianprotection,jdbcType=VARCHAR}, #{apsdtirepressuremonitoringfunction,jdbcType=VARCHAR}, 
+      #{apsdzerotirepressuredriving,jdbcType=VARCHAR}, #{apsdsafetybeltnotwornreminder,jdbcType=VARCHAR}, 
+      #{apsdisofixchildseatinterface,jdbcType=VARCHAR}, #{apsdabs,jdbcType=VARCHAR}, 
+      #{apsdbrakeforcedistribution,jdbcType=VARCHAR}, #{apsdbrakeassist,jdbcType=VARCHAR}, 
+      #{apsdtractioncontrol,jdbcType=VARCHAR}, #{apsdbodystabilitycontrol,jdbcType=VARCHAR}, 
+      #{apsddoublingassistance,jdbcType=VARCHAR}, #{apsdlanedeparturewarning,jdbcType=VARCHAR}, 
+      #{apsdlanekeepingassist,jdbcType=VARCHAR}, #{apsdidentificationroadtrafficsigns,jdbcType=VARCHAR}, 
+      #{apsdactivebrakesystem,jdbcType=VARCHAR}, #{apsdnightvisionsystem,jdbcType=VARCHAR}, 
+      #{apsdfatiguedrivingtips,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="APSDID" keyProperty="apsdid" parameterType="com.springboot.entity.Activepassivesafetydevice" useGeneratedKeys="true">
+    insert into activepassivesafetydevice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="apsdairbag != null">
+        APSDairbag,
+      </if>
+      <if test="apsdfrontrearairbags != null">
+        APSDFrontrearairbags,
+      </if>
+      <if test="apsdfrontrearheadairbag != null">
+        APSDFrontrearheadairbag,
+      </if>
+      <if test="apsdkneeairbag != null">
+        APSDKneeAirbag,
+      </if>
+      <if test="apsdcopilotcushionairbag != null">
+        APSDCopilotcushionairbag,
+      </if>
+      <if test="apsdbackwardbeltairbag != null">
+        APSDBackwardbeltairbag,
+      </if>
+      <if test="apsdbackseatantislideairbag != null">
+        APSDBackseatantislideairbag,
+      </if>
+      <if test="apsdrearcentreairbag != null">
+        APSDRearcentreairbag,
+      </if>
+      <if test="apsdpassivepedestrianprotection != null">
+        APSDPassivepedestrianprotection,
+      </if>
+      <if test="apsdtirepressuremonitoringfunction != null">
+        APSDTirepressuremonitoringfunction,
+      </if>
+      <if test="apsdzerotirepressuredriving != null">
+        APSDZerotirepressuredriving,
+      </if>
+      <if test="apsdsafetybeltnotwornreminder != null">
+        APSDSafetybeltnotwornreminder,
+      </if>
+      <if test="apsdisofixchildseatinterface != null">
+        APSDISOFIXChildseatinterface,
+      </if>
+      <if test="apsdabs != null">
+        APSDABS,
+      </if>
+      <if test="apsdbrakeforcedistribution != null">
+        APSDBrakeforcedistribution,
+      </if>
+      <if test="apsdbrakeassist != null">
+        APSDBrakeassist,
+      </if>
+      <if test="apsdtractioncontrol != null">
+        APSDTractioncontrol,
+      </if>
+      <if test="apsdbodystabilitycontrol != null">
+        APSDBodystabilitycontrol,
+      </if>
+      <if test="apsddoublingassistance != null">
+        APSDDoublingassistance,
+      </if>
+      <if test="apsdlanedeparturewarning != null">
+        APSDLaneDepartureWarning,
+      </if>
+      <if test="apsdlanekeepingassist != null">
+        APSDLanekeepingassist,
+      </if>
+      <if test="apsdidentificationroadtrafficsigns != null">
+        APSDIdentificationroadtrafficsigns,
+      </if>
+      <if test="apsdactivebrakesystem != null">
+        APSDActivebrakesystem,
+      </if>
+      <if test="apsdnightvisionsystem != null">
+        APSDNightvisionsystem,
+      </if>
+      <if test="apsdfatiguedrivingtips != null">
+        APSDFatiguedrivingtips,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="apsdairbag != null">
+        #{apsdairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdfrontrearairbags != null">
+        #{apsdfrontrearairbags,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdfrontrearheadairbag != null">
+        #{apsdfrontrearheadairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdkneeairbag != null">
+        #{apsdkneeairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdcopilotcushionairbag != null">
+        #{apsdcopilotcushionairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbackwardbeltairbag != null">
+        #{apsdbackwardbeltairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbackseatantislideairbag != null">
+        #{apsdbackseatantislideairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdrearcentreairbag != null">
+        #{apsdrearcentreairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdpassivepedestrianprotection != null">
+        #{apsdpassivepedestrianprotection,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdtirepressuremonitoringfunction != null">
+        #{apsdtirepressuremonitoringfunction,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdzerotirepressuredriving != null">
+        #{apsdzerotirepressuredriving,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdsafetybeltnotwornreminder != null">
+        #{apsdsafetybeltnotwornreminder,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdisofixchildseatinterface != null">
+        #{apsdisofixchildseatinterface,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdabs != null">
+        #{apsdabs,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbrakeforcedistribution != null">
+        #{apsdbrakeforcedistribution,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbrakeassist != null">
+        #{apsdbrakeassist,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdtractioncontrol != null">
+        #{apsdtractioncontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbodystabilitycontrol != null">
+        #{apsdbodystabilitycontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="apsddoublingassistance != null">
+        #{apsddoublingassistance,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdlanedeparturewarning != null">
+        #{apsdlanedeparturewarning,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdlanekeepingassist != null">
+        #{apsdlanekeepingassist,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdidentificationroadtrafficsigns != null">
+        #{apsdidentificationroadtrafficsigns,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdactivebrakesystem != null">
+        #{apsdactivebrakesystem,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdnightvisionsystem != null">
+        #{apsdnightvisionsystem,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdfatiguedrivingtips != null">
+        #{apsdfatiguedrivingtips,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Activepassivesafetydevice">
+    update activepassivesafetydevice
+    <set>
+      <if test="apsdairbag != null">
+        APSDairbag = #{apsdairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdfrontrearairbags != null">
+        APSDFrontrearairbags = #{apsdfrontrearairbags,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdfrontrearheadairbag != null">
+        APSDFrontrearheadairbag = #{apsdfrontrearheadairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdkneeairbag != null">
+        APSDKneeAirbag = #{apsdkneeairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdcopilotcushionairbag != null">
+        APSDCopilotcushionairbag = #{apsdcopilotcushionairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbackwardbeltairbag != null">
+        APSDBackwardbeltairbag = #{apsdbackwardbeltairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbackseatantislideairbag != null">
+        APSDBackseatantislideairbag = #{apsdbackseatantislideairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdrearcentreairbag != null">
+        APSDRearcentreairbag = #{apsdrearcentreairbag,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdpassivepedestrianprotection != null">
+        APSDPassivepedestrianprotection = #{apsdpassivepedestrianprotection,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdtirepressuremonitoringfunction != null">
+        APSDTirepressuremonitoringfunction = #{apsdtirepressuremonitoringfunction,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdzerotirepressuredriving != null">
+        APSDZerotirepressuredriving = #{apsdzerotirepressuredriving,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdsafetybeltnotwornreminder != null">
+        APSDSafetybeltnotwornreminder = #{apsdsafetybeltnotwornreminder,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdisofixchildseatinterface != null">
+        APSDISOFIXChildseatinterface = #{apsdisofixchildseatinterface,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdabs != null">
+        APSDABS = #{apsdabs,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbrakeforcedistribution != null">
+        APSDBrakeforcedistribution = #{apsdbrakeforcedistribution,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbrakeassist != null">
+        APSDBrakeassist = #{apsdbrakeassist,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdtractioncontrol != null">
+        APSDTractioncontrol = #{apsdtractioncontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdbodystabilitycontrol != null">
+        APSDBodystabilitycontrol = #{apsdbodystabilitycontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="apsddoublingassistance != null">
+        APSDDoublingassistance = #{apsddoublingassistance,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdlanedeparturewarning != null">
+        APSDLaneDepartureWarning = #{apsdlanedeparturewarning,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdlanekeepingassist != null">
+        APSDLanekeepingassist = #{apsdlanekeepingassist,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdidentificationroadtrafficsigns != null">
+        APSDIdentificationroadtrafficsigns = #{apsdidentificationroadtrafficsigns,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdactivebrakesystem != null">
+        APSDActivebrakesystem = #{apsdactivebrakesystem,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdnightvisionsystem != null">
+        APSDNightvisionsystem = #{apsdnightvisionsystem,jdbcType=VARCHAR},
+      </if>
+      <if test="apsdfatiguedrivingtips != null">
+        APSDFatiguedrivingtips = #{apsdfatiguedrivingtips,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where APSDID = #{apsdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Activepassivesafetydevice">
+    update activepassivesafetydevice
+    set APSDairbag = #{apsdairbag,jdbcType=VARCHAR},
+      APSDFrontrearairbags = #{apsdfrontrearairbags,jdbcType=VARCHAR},
+      APSDFrontrearheadairbag = #{apsdfrontrearheadairbag,jdbcType=VARCHAR},
+      APSDKneeAirbag = #{apsdkneeairbag,jdbcType=VARCHAR},
+      APSDCopilotcushionairbag = #{apsdcopilotcushionairbag,jdbcType=VARCHAR},
+      APSDBackwardbeltairbag = #{apsdbackwardbeltairbag,jdbcType=VARCHAR},
+      APSDBackseatantislideairbag = #{apsdbackseatantislideairbag,jdbcType=VARCHAR},
+      APSDRearcentreairbag = #{apsdrearcentreairbag,jdbcType=VARCHAR},
+      APSDPassivepedestrianprotection = #{apsdpassivepedestrianprotection,jdbcType=VARCHAR},
+      APSDTirepressuremonitoringfunction = #{apsdtirepressuremonitoringfunction,jdbcType=VARCHAR},
+      APSDZerotirepressuredriving = #{apsdzerotirepressuredriving,jdbcType=VARCHAR},
+      APSDSafetybeltnotwornreminder = #{apsdsafetybeltnotwornreminder,jdbcType=VARCHAR},
+      APSDISOFIXChildseatinterface = #{apsdisofixchildseatinterface,jdbcType=VARCHAR},
+      APSDABS = #{apsdabs,jdbcType=VARCHAR},
+      APSDBrakeforcedistribution = #{apsdbrakeforcedistribution,jdbcType=VARCHAR},
+      APSDBrakeassist = #{apsdbrakeassist,jdbcType=VARCHAR},
+      APSDTractioncontrol = #{apsdtractioncontrol,jdbcType=VARCHAR},
+      APSDBodystabilitycontrol = #{apsdbodystabilitycontrol,jdbcType=VARCHAR},
+      APSDDoublingassistance = #{apsddoublingassistance,jdbcType=VARCHAR},
+      APSDLaneDepartureWarning = #{apsdlanedeparturewarning,jdbcType=VARCHAR},
+      APSDLanekeepingassist = #{apsdlanekeepingassist,jdbcType=VARCHAR},
+      APSDIdentificationroadtrafficsigns = #{apsdidentificationroadtrafficsigns,jdbcType=VARCHAR},
+      APSDActivebrakesystem = #{apsdactivebrakesystem,jdbcType=VARCHAR},
+      APSDNightvisionsystem = #{apsdnightvisionsystem,jdbcType=VARCHAR},
+      APSDFatiguedrivingtips = #{apsdfatiguedrivingtips,jdbcType=VARCHAR}
+    where APSDID = #{apsdid,jdbcType=INTEGER}
+  </update>
+</mapper>

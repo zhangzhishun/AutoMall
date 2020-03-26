@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.BodyDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Body">
+    <id column="CBID" jdbcType="DOUBLE" property="cbid" />
+    <result column="CBLength" jdbcType="DOUBLE" property="cblength" />
+    <result column="CBWidth" jdbcType="DOUBLE" property="cbwidth" />
+    <result column="CBheight" jdbcType="DOUBLE" property="cbheight" />
+    <result column="CBWheelBase" jdbcType="VARCHAR" property="cbwheelbase" />
+    <result column="CBFrontGauge" jdbcType="VARCHAR" property="cbfrontgauge" />
+    <result column="CBRearTrack" jdbcType="VARCHAR" property="cbreartrack" />
+    <result column="CBMinClearanceFromGround" jdbcType="VARCHAR" property="cbminclearancefromground" />
+    <result column="CBBodywork" jdbcType="VARCHAR" property="cbbodywork" />
+    <result column="CBDoorNumber" jdbcType="INTEGER" property="cbdoornumber" />
+    <result column="CBSeating" jdbcType="VARCHAR" property="cbseating" />
+    <result column="CBFuelTankCapacity" jdbcType="VARCHAR" property="cbfueltankcapacity" />
+    <result column="CBBaggageVolume" jdbcType="VARCHAR" property="cbbaggagevolume" />
+    <result column="CBCurbWeight" jdbcType="DOUBLE" property="cbcurbweight" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CBID, CBLength, CBWidth, CBheight, CBWheelBase, CBFrontGauge, CBRearTrack, CBMinClearanceFromGround, 
+    CBBodywork, CBDoorNumber, CBSeating, CBFuelTankCapacity, CBBaggageVolume, CBCurbWeight
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Double" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from body
+    where CBID = #{cbid,jdbcType=DOUBLE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Double">
+    delete from body
+    where CBID = #{cbid,jdbcType=DOUBLE}
+  </delete>
+  <insert id="insert" keyColumn="CBID" keyProperty="cbid" parameterType="com.springboot.entity.Body" useGeneratedKeys="true">
+    insert into body (CBLength, CBWidth, CBheight, 
+      CBWheelBase, CBFrontGauge, CBRearTrack, 
+      CBMinClearanceFromGround, CBBodywork, CBDoorNumber, 
+      CBSeating, CBFuelTankCapacity, CBBaggageVolume, 
+      CBCurbWeight)
+    values (#{cblength,jdbcType=DOUBLE}, #{cbwidth,jdbcType=DOUBLE}, #{cbheight,jdbcType=DOUBLE}, 
+      #{cbwheelbase,jdbcType=VARCHAR}, #{cbfrontgauge,jdbcType=VARCHAR}, #{cbreartrack,jdbcType=VARCHAR}, 
+      #{cbminclearancefromground,jdbcType=VARCHAR}, #{cbbodywork,jdbcType=VARCHAR}, #{cbdoornumber,jdbcType=INTEGER}, 
+      #{cbseating,jdbcType=VARCHAR}, #{cbfueltankcapacity,jdbcType=VARCHAR}, #{cbbaggagevolume,jdbcType=VARCHAR}, 
+      #{cbcurbweight,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" keyColumn="CBID" keyProperty="cbid" parameterType="com.springboot.entity.Body" useGeneratedKeys="true">
+    insert into body
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cblength != null">
+        CBLength,
+      </if>
+      <if test="cbwidth != null">
+        CBWidth,
+      </if>
+      <if test="cbheight != null">
+        CBheight,
+      </if>
+      <if test="cbwheelbase != null">
+        CBWheelBase,
+      </if>
+      <if test="cbfrontgauge != null">
+        CBFrontGauge,
+      </if>
+      <if test="cbreartrack != null">
+        CBRearTrack,
+      </if>
+      <if test="cbminclearancefromground != null">
+        CBMinClearanceFromGround,
+      </if>
+      <if test="cbbodywork != null">
+        CBBodywork,
+      </if>
+      <if test="cbdoornumber != null">
+        CBDoorNumber,
+      </if>
+      <if test="cbseating != null">
+        CBSeating,
+      </if>
+      <if test="cbfueltankcapacity != null">
+        CBFuelTankCapacity,
+      </if>
+      <if test="cbbaggagevolume != null">
+        CBBaggageVolume,
+      </if>
+      <if test="cbcurbweight != null">
+        CBCurbWeight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cblength != null">
+        #{cblength,jdbcType=DOUBLE},
+      </if>
+      <if test="cbwidth != null">
+        #{cbwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="cbheight != null">
+        #{cbheight,jdbcType=DOUBLE},
+      </if>
+      <if test="cbwheelbase != null">
+        #{cbwheelbase,jdbcType=VARCHAR},
+      </if>
+      <if test="cbfrontgauge != null">
+        #{cbfrontgauge,jdbcType=VARCHAR},
+      </if>
+      <if test="cbreartrack != null">
+        #{cbreartrack,jdbcType=VARCHAR},
+      </if>
+      <if test="cbminclearancefromground != null">
+        #{cbminclearancefromground,jdbcType=VARCHAR},
+      </if>
+      <if test="cbbodywork != null">
+        #{cbbodywork,jdbcType=VARCHAR},
+      </if>
+      <if test="cbdoornumber != null">
+        #{cbdoornumber,jdbcType=INTEGER},
+      </if>
+      <if test="cbseating != null">
+        #{cbseating,jdbcType=VARCHAR},
+      </if>
+      <if test="cbfueltankcapacity != null">
+        #{cbfueltankcapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="cbbaggagevolume != null">
+        #{cbbaggagevolume,jdbcType=VARCHAR},
+      </if>
+      <if test="cbcurbweight != null">
+        #{cbcurbweight,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Body">
+    update body
+    <set>
+      <if test="cblength != null">
+        CBLength = #{cblength,jdbcType=DOUBLE},
+      </if>
+      <if test="cbwidth != null">
+        CBWidth = #{cbwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="cbheight != null">
+        CBheight = #{cbheight,jdbcType=DOUBLE},
+      </if>
+      <if test="cbwheelbase != null">
+        CBWheelBase = #{cbwheelbase,jdbcType=VARCHAR},
+      </if>
+      <if test="cbfrontgauge != null">
+        CBFrontGauge = #{cbfrontgauge,jdbcType=VARCHAR},
+      </if>
+      <if test="cbreartrack != null">
+        CBRearTrack = #{cbreartrack,jdbcType=VARCHAR},
+      </if>
+      <if test="cbminclearancefromground != null">
+        CBMinClearanceFromGround = #{cbminclearancefromground,jdbcType=VARCHAR},
+      </if>
+      <if test="cbbodywork != null">
+        CBBodywork = #{cbbodywork,jdbcType=VARCHAR},
+      </if>
+      <if test="cbdoornumber != null">
+        CBDoorNumber = #{cbdoornumber,jdbcType=INTEGER},
+      </if>
+      <if test="cbseating != null">
+        CBSeating = #{cbseating,jdbcType=VARCHAR},
+      </if>
+      <if test="cbfueltankcapacity != null">
+        CBFuelTankCapacity = #{cbfueltankcapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="cbbaggagevolume != null">
+        CBBaggageVolume = #{cbbaggagevolume,jdbcType=VARCHAR},
+      </if>
+      <if test="cbcurbweight != null">
+        CBCurbWeight = #{cbcurbweight,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where CBID = #{cbid,jdbcType=DOUBLE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Body">
+    update body
+    set CBLength = #{cblength,jdbcType=DOUBLE},
+      CBWidth = #{cbwidth,jdbcType=DOUBLE},
+      CBheight = #{cbheight,jdbcType=DOUBLE},
+      CBWheelBase = #{cbwheelbase,jdbcType=VARCHAR},
+      CBFrontGauge = #{cbfrontgauge,jdbcType=VARCHAR},
+      CBRearTrack = #{cbreartrack,jdbcType=VARCHAR},
+      CBMinClearanceFromGround = #{cbminclearancefromground,jdbcType=VARCHAR},
+      CBBodywork = #{cbbodywork,jdbcType=VARCHAR},
+      CBDoorNumber = #{cbdoornumber,jdbcType=INTEGER},
+      CBSeating = #{cbseating,jdbcType=VARCHAR},
+      CBFuelTankCapacity = #{cbfueltankcapacity,jdbcType=VARCHAR},
+      CBBaggageVolume = #{cbbaggagevolume,jdbcType=VARCHAR},
+      CBCurbWeight = #{cbcurbweight,jdbcType=DOUBLE}
+    where CBID = #{cbid,jdbcType=DOUBLE}
+  </update>
+</mapper>

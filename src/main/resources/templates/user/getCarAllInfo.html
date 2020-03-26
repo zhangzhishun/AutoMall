@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>用户所有订单</title>
+		<script src="/AutoMall/webjars/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Bootstrap core CSS -->
+		<link href="/AutoMall/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+	可以查看车的所有信息，以下为部分配置样例：
+	<table border="1">
+		<tr>
+			<th>车名字</th>
+			<th>配置1</th>
+			<th>配置2</th>
+			<th>配置3</th>
+			<th>配置4</th>
+			<th>配置5</th>
+			<th>配置6</th>
+		</tr>
+		<tr th:each="o:${car}">
+			<td th:text="${o['carName']}"></td>
+			<td th:text="${o['APSDSafetybeltnotwornreminder']}"></td>
+			<td th:text="${o['WBFrontTyre']}"></td>
+			<td th:text="${o['CEPFirm']}"></td>
+			<td th:text="${o['PSAppearanceColor']}"></td>
+			<td th:text="${o['CEPEnvironmentalStandards']}"></td>
+			<td th:text="${o['CEPAcrotOrque']}"></td>
+		</tr>
+	</table>
+	</body>
+
+</html>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.CarDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Car">
+    <id column="carId" jdbcType="INTEGER" property="carid" />
+    <result column="carName" jdbcType="VARCHAR" property="carname" />
+    <result column="ARID" jdbcType="INTEGER" property="arid" />
+    <result column="CBID" jdbcType="INTEGER" property="cbid" />
+    <result column="CSID" jdbcType="INTEGER" property="csid" />
+    <result column="ENID" jdbcType="INTEGER" property="enid" />
+    <result column="CEPID" jdbcType="INTEGER" property="cepid" />
+    <result column="GBID" jdbcType="INTEGER" property="gbid" />
+    <result column="PSID" jdbcType="INTEGER" property="psid" />
+    <result column="WBID" jdbcType="INTEGER" property="wbid" />
+    <result column="ACID" jdbcType="INTEGER" property="acid" />
+    <result column="ESID" jdbcType="INTEGER" property="esid" />
+    <result column="IID" jdbcType="INTEGER" property="iid" />
+    <result column="SID" jdbcType="INTEGER" property="sid" />
+    <result column="EMID" jdbcType="INTEGER" property="emid" />
+    <result column="APSDID" jdbcType="INTEGER" property="apsdid" />
+    <result column="MCID" jdbcType="INTEGER" property="mcid" />
+    <result column="LCID" jdbcType="INTEGER" property="lcid" />
+    <result column="GRMID" jdbcType="INTEGER" property="grmid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    carId, carName, ARID, CBID, CSID, ENID, CEPID, GBID, `PSID`, WBID, ACID, ESID, IID, 
+    SID, EMID, APSDID, MCID, LCID, GRMID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where carId = #{carid,jdbcType=INTEGER}
+  </select>
+    <select id="selectAllInfoByPrimaryKey" parameterType="java.lang.Integer" resultType="java.util.Map">
+    select *
+    from car,
+    activepassivesafetydevice,airconditionedrefrigerator,
+    auxiliarycontrol,body,
+    chassissteering,
+    electricmotor,engine,
+    essentialparam,exteriorsecurity,
+    gearbox,glassrearviewmirror,
+    internal,lightingconfig,
+    multimediaconfig,packageselect,
+    seat,wheelbrake
+    where car.carId= #{carid,jdbcType=INTEGER}
+    and activepassivesafetydevice.APSDID = car.APSDID and airconditionedrefrigerator.ARID = car.ARID
+    and auxiliarycontrol.ACID = car.ACID and body.CBID = car.CBID
+    and chassissteering.CSID = car.CSID
+    and electricmotor.EMID = car.EMID and engine.ENID = car.ENID
+    and essentialparam.CEPID = car.CEPID and exteriorsecurity.ESID = car.ESID and gearbox.GBID = car.GBID
+    and glassrearviewmirror.GRMID = car.GRMID and internal.IID = car.IID
+    and lightingconfig.LCID = car.LCID and multimediaconfig.MCID = car.MCID
+    and packageselect.PSID = car.PSID and seat.SID = car.SID and wheelbrake.WBID = car.WBID
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from car
+    where carId = #{carid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="carId" keyProperty="carid" parameterType="com.springboot.entity.Car" useGeneratedKeys="true">
+    insert into car (carName, ARID, CBID, 
+      CSID, ENID, CEPID, 
+      GBID, `PSID`, WBID, ACID, 
+      ESID, IID, SID, EMID, 
+      APSDID, MCID, LCID, 
+      GRMID)
+    values (#{carname,jdbcType=VARCHAR}, #{arid,jdbcType=INTEGER}, #{cbid,jdbcType=INTEGER}, 
+      #{csid,jdbcType=INTEGER}, #{enid,jdbcType=INTEGER}, #{cepid,jdbcType=INTEGER}, 
+      #{gbid,jdbcType=INTEGER}, #{psid,jdbcType=INTEGER}, #{wbid,jdbcType=INTEGER}, #{acid,jdbcType=INTEGER}, 
+      #{esid,jdbcType=INTEGER}, #{iid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{emid,jdbcType=INTEGER}, 
+      #{apsdid,jdbcType=INTEGER}, #{mcid,jdbcType=INTEGER}, #{lcid,jdbcType=INTEGER}, 
+      #{grmid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="carId" keyProperty="carid" parameterType="com.springboot.entity.Car" useGeneratedKeys="true">
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carname != null">
+        carName,
+      </if>
+      <if test="arid != null">
+        ARID,
+      </if>
+      <if test="cbid != null">
+        CBID,
+      </if>
+      <if test="csid != null">
+        CSID,
+      </if>
+      <if test="enid != null">
+        ENID,
+      </if>
+      <if test="cepid != null">
+        CEPID,
+      </if>
+      <if test="gbid != null">
+        GBID,
+      </if>
+      <if test="psid != null">
+        `PSID`,
+      </if>
+      <if test="wbid != null">
+        WBID,
+      </if>
+      <if test="acid != null">
+        ACID,
+      </if>
+      <if test="esid != null">
+        ESID,
+      </if>
+      <if test="iid != null">
+        IID,
+      </if>
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="emid != null">
+        EMID,
+      </if>
+      <if test="apsdid != null">
+        APSDID,
+      </if>
+      <if test="mcid != null">
+        MCID,
+      </if>
+      <if test="lcid != null">
+        LCID,
+      </if>
+      <if test="grmid != null">
+        GRMID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carname != null">
+        #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="arid != null">
+        #{arid,jdbcType=INTEGER},
+      </if>
+      <if test="cbid != null">
+        #{cbid,jdbcType=INTEGER},
+      </if>
+      <if test="csid != null">
+        #{csid,jdbcType=INTEGER},
+      </if>
+      <if test="enid != null">
+        #{enid,jdbcType=INTEGER},
+      </if>
+      <if test="cepid != null">
+        #{cepid,jdbcType=INTEGER},
+      </if>
+      <if test="gbid != null">
+        #{gbid,jdbcType=INTEGER},
+      </if>
+      <if test="psid != null">
+        #{psid,jdbcType=INTEGER},
+      </if>
+      <if test="wbid != null">
+        #{wbid,jdbcType=INTEGER},
+      </if>
+      <if test="acid != null">
+        #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="esid != null">
+        #{esid,jdbcType=INTEGER},
+      </if>
+      <if test="iid != null">
+        #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="emid != null">
+        #{emid,jdbcType=INTEGER},
+      </if>
+      <if test="apsdid != null">
+        #{apsdid,jdbcType=INTEGER},
+      </if>
+      <if test="mcid != null">
+        #{mcid,jdbcType=INTEGER},
+      </if>
+      <if test="lcid != null">
+        #{lcid,jdbcType=INTEGER},
+      </if>
+      <if test="grmid != null">
+        #{grmid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Car">
+    update car
+    <set>
+      <if test="carname != null">
+        carName = #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="arid != null">
+        ARID = #{arid,jdbcType=INTEGER},
+      </if>
+      <if test="cbid != null">
+        CBID = #{cbid,jdbcType=INTEGER},
+      </if>
+      <if test="csid != null">
+        CSID = #{csid,jdbcType=INTEGER},
+      </if>
+      <if test="enid != null">
+        ENID = #{enid,jdbcType=INTEGER},
+      </if>
+      <if test="cepid != null">
+        CEPID = #{cepid,jdbcType=INTEGER},
+      </if>
+      <if test="gbid != null">
+        GBID = #{gbid,jdbcType=INTEGER},
+      </if>
+      <if test="psid != null">
+        `PSID` = #{psid,jdbcType=INTEGER},
+      </if>
+      <if test="wbid != null">
+        WBID = #{wbid,jdbcType=INTEGER},
+      </if>
+      <if test="acid != null">
+        ACID = #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="esid != null">
+        ESID = #{esid,jdbcType=INTEGER},
+      </if>
+      <if test="iid != null">
+        IID = #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        SID = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="emid != null">
+        EMID = #{emid,jdbcType=INTEGER},
+      </if>
+      <if test="apsdid != null">
+        APSDID = #{apsdid,jdbcType=INTEGER},
+      </if>
+      <if test="mcid != null">
+        MCID = #{mcid,jdbcType=INTEGER},
+      </if>
+      <if test="lcid != null">
+        LCID = #{lcid,jdbcType=INTEGER},
+      </if>
+      <if test="grmid != null">
+        GRMID = #{grmid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where carId = #{carid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Car">
+    update car
+    set carName = #{carname,jdbcType=VARCHAR},
+      ARID = #{arid,jdbcType=INTEGER},
+      CBID = #{cbid,jdbcType=INTEGER},
+      CSID = #{csid,jdbcType=INTEGER},
+      ENID = #{enid,jdbcType=INTEGER},
+      CEPID = #{cepid,jdbcType=INTEGER},
+      GBID = #{gbid,jdbcType=INTEGER},
+      `PSID` = #{psid,jdbcType=INTEGER},
+      WBID = #{wbid,jdbcType=INTEGER},
+      ACID = #{acid,jdbcType=INTEGER},
+      ESID = #{esid,jdbcType=INTEGER},
+      IID = #{iid,jdbcType=INTEGER},
+      SID = #{sid,jdbcType=INTEGER},
+      EMID = #{emid,jdbcType=INTEGER},
+      APSDID = #{apsdid,jdbcType=INTEGER},
+      MCID = #{mcid,jdbcType=INTEGER},
+      LCID = #{lcid,jdbcType=INTEGER},
+      GRMID = #{grmid,jdbcType=INTEGER}
+    where carId = #{carid,jdbcType=INTEGER}
+  </update>
+</mapper>

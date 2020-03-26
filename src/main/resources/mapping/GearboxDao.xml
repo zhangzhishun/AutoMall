@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.GearboxDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Gearbox">
+    <id column="GBID" jdbcType="INTEGER" property="gbid" />
+    <result column="GBNumber" jdbcType="INTEGER" property="gbnumber" />
+    <result column="GBStyle" jdbcType="VARCHAR" property="gbstyle" />
+    <result column="GBAbbreviation" jdbcType="VARCHAR" property="gbabbreviation" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    GBID, GBNumber, GBStyle, GBAbbreviation
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gearbox
+    where GBID = #{gbid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gearbox
+    where GBID = #{gbid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="GBID" keyProperty="gbid" parameterType="com.springboot.entity.Gearbox" useGeneratedKeys="true">
+    insert into gearbox (GBNumber, GBStyle, GBAbbreviation
+      )
+    values (#{gbnumber,jdbcType=INTEGER}, #{gbstyle,jdbcType=VARCHAR}, #{gbabbreviation,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="GBID" keyProperty="gbid" parameterType="com.springboot.entity.Gearbox" useGeneratedKeys="true">
+    insert into gearbox
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gbnumber != null">
+        GBNumber,
+      </if>
+      <if test="gbstyle != null">
+        GBStyle,
+      </if>
+      <if test="gbabbreviation != null">
+        GBAbbreviation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gbnumber != null">
+        #{gbnumber,jdbcType=INTEGER},
+      </if>
+      <if test="gbstyle != null">
+        #{gbstyle,jdbcType=VARCHAR},
+      </if>
+      <if test="gbabbreviation != null">
+        #{gbabbreviation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Gearbox">
+    update gearbox
+    <set>
+      <if test="gbnumber != null">
+        GBNumber = #{gbnumber,jdbcType=INTEGER},
+      </if>
+      <if test="gbstyle != null">
+        GBStyle = #{gbstyle,jdbcType=VARCHAR},
+      </if>
+      <if test="gbabbreviation != null">
+        GBAbbreviation = #{gbabbreviation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GBID = #{gbid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Gearbox">
+    update gearbox
+    set GBNumber = #{gbnumber,jdbcType=INTEGER},
+      GBStyle = #{gbstyle,jdbcType=VARCHAR},
+      GBAbbreviation = #{gbabbreviation,jdbcType=VARCHAR}
+    where GBID = #{gbid,jdbcType=INTEGER}
+  </update>
+</mapper>

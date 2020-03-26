@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.BrowserecordDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Browserecord">
+    <id column="BRFID" jdbcType="INTEGER" property="brfid" />
+    <result column="userID" jdbcType="INTEGER" property="userid" />
+    <result column="BRFTime" jdbcType="TIMESTAMP" property="brftime" />
+    <result column="carID" jdbcType="INTEGER" property="carid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    BRFID, userID, BRFTime, carID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from browserecord
+    where BRFID = #{brfid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from browserecord
+    where BRFID = #{brfid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="BRFID" keyProperty="brfid" parameterType="com.springboot.entity.Browserecord" useGeneratedKeys="true">
+    insert into browserecord (userID, BRFTime, carID
+      )
+    values (#{userid,jdbcType=INTEGER}, #{brftime,jdbcType=TIMESTAMP}, #{carid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="BRFID" keyProperty="brfid" parameterType="com.springboot.entity.Browserecord" useGeneratedKeys="true">
+    insert into browserecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userID,
+      </if>
+      <if test="brftime != null">
+        BRFTime,
+      </if>
+      <if test="carid != null">
+        carID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="brftime != null">
+        #{brftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carid != null">
+        #{carid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Browserecord">
+    update browserecord
+    <set>
+      <if test="userid != null">
+        userID = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="brftime != null">
+        BRFTime = #{brftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carid != null">
+        carID = #{carid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where BRFID = #{brfid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Browserecord">
+    update browserecord
+    set userID = #{userid,jdbcType=INTEGER},
+      BRFTime = #{brftime,jdbcType=TIMESTAMP},
+      carID = #{carid,jdbcType=INTEGER}
+    where BRFID = #{brfid,jdbcType=INTEGER}
+  </update>
+</mapper>

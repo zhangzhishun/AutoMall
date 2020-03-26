@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.LightingconfigDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Lightingconfig">
+    <id column="LCID" jdbcType="INTEGER" property="lcid" />
+    <result column="LCLowbeamlightsource" jdbcType="VARCHAR" property="lclowbeamlightsource" />
+    <result column="LCHighbeamlightsource" jdbcType="VARCHAR" property="lchighbeamlightsource" />
+    <result column="LCLightingfeatures" jdbcType="VARCHAR" property="lclightingfeatures" />
+    <result column="LCLEDdaytimerunlight" jdbcType="VARCHAR" property="lcleddaytimerunlight" />
+    <result column="LCAdaptivehighlowbeam" jdbcType="VARCHAR" property="lcadaptivehighlowbeam" />
+    <result column="LCAutomaticheadlamp" jdbcType="VARCHAR" property="lcautomaticheadlamp" />
+    <result column="LCSteeringassistlamp" jdbcType="VARCHAR" property="lcsteeringassistlamp" />
+    <result column="LCTurnheadlamp" jdbcType="VARCHAR" property="lcturnheadlamp" />
+    <result column="LCFrontfoglamp" jdbcType="VARCHAR" property="lcfrontfoglamp" />
+    <result column="LCHeadlamprainmode" jdbcType="VARCHAR" property="lcheadlamprainmode" />
+    <result column="LCAdjustableheadlightheight" jdbcType="VARCHAR" property="lcadjustableheadlightheight" />
+    <result column="LCHeadlightcleaningdevice" jdbcType="VARCHAR" property="lcheadlightcleaningdevice" />
+    <result column="LCHeadlampdelayoff" jdbcType="VARCHAR" property="lcheadlampdelayoff" />
+    <result column="LCTouchreadinglamp" jdbcType="VARCHAR" property="lctouchreadinglamp" />
+    <result column="LCInteriorambiencelight" jdbcType="VARCHAR" property="lcinteriorambiencelight" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LCID, LCLowbeamlightsource, LCHighbeamlightsource, LCLightingfeatures, LCLEDdaytimerunlight, 
+    LCAdaptivehighlowbeam, LCAutomaticheadlamp, LCSteeringassistlamp, LCTurnheadlamp, 
+    LCFrontfoglamp, LCHeadlamprainmode, LCAdjustableheadlightheight, LCHeadlightcleaningdevice, 
+    LCHeadlampdelayoff, LCTouchreadinglamp, LCInteriorambiencelight
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lightingconfig
+    where LCID = #{lcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lightingconfig
+    where LCID = #{lcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="LCID" keyProperty="lcid" parameterType="com.springboot.entity.Lightingconfig" useGeneratedKeys="true">
+    insert into lightingconfig (LCLowbeamlightsource, LCHighbeamlightsource, 
+      LCLightingfeatures, LCLEDdaytimerunlight, 
+      LCAdaptivehighlowbeam, LCAutomaticheadlamp, 
+      LCSteeringassistlamp, LCTurnheadlamp, LCFrontfoglamp, 
+      LCHeadlamprainmode, LCAdjustableheadlightheight, 
+      LCHeadlightcleaningdevice, LCHeadlampdelayoff, 
+      LCTouchreadinglamp, LCInteriorambiencelight
+      )
+    values (#{lclowbeamlightsource,jdbcType=VARCHAR}, #{lchighbeamlightsource,jdbcType=VARCHAR}, 
+      #{lclightingfeatures,jdbcType=VARCHAR}, #{lcleddaytimerunlight,jdbcType=VARCHAR}, 
+      #{lcadaptivehighlowbeam,jdbcType=VARCHAR}, #{lcautomaticheadlamp,jdbcType=VARCHAR}, 
+      #{lcsteeringassistlamp,jdbcType=VARCHAR}, #{lcturnheadlamp,jdbcType=VARCHAR}, #{lcfrontfoglamp,jdbcType=VARCHAR}, 
+      #{lcheadlamprainmode,jdbcType=VARCHAR}, #{lcadjustableheadlightheight,jdbcType=VARCHAR}, 
+      #{lcheadlightcleaningdevice,jdbcType=VARCHAR}, #{lcheadlampdelayoff,jdbcType=VARCHAR}, 
+      #{lctouchreadinglamp,jdbcType=VARCHAR}, #{lcinteriorambiencelight,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="LCID" keyProperty="lcid" parameterType="com.springboot.entity.Lightingconfig" useGeneratedKeys="true">
+    insert into lightingconfig
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lclowbeamlightsource != null">
+        LCLowbeamlightsource,
+      </if>
+      <if test="lchighbeamlightsource != null">
+        LCHighbeamlightsource,
+      </if>
+      <if test="lclightingfeatures != null">
+        LCLightingfeatures,
+      </if>
+      <if test="lcleddaytimerunlight != null">
+        LCLEDdaytimerunlight,
+      </if>
+      <if test="lcadaptivehighlowbeam != null">
+        LCAdaptivehighlowbeam,
+      </if>
+      <if test="lcautomaticheadlamp != null">
+        LCAutomaticheadlamp,
+      </if>
+      <if test="lcsteeringassistlamp != null">
+        LCSteeringassistlamp,
+      </if>
+      <if test="lcturnheadlamp != null">
+        LCTurnheadlamp,
+      </if>
+      <if test="lcfrontfoglamp != null">
+        LCFrontfoglamp,
+      </if>
+      <if test="lcheadlamprainmode != null">
+        LCHeadlamprainmode,
+      </if>
+      <if test="lcadjustableheadlightheight != null">
+        LCAdjustableheadlightheight,
+      </if>
+      <if test="lcheadlightcleaningdevice != null">
+        LCHeadlightcleaningdevice,
+      </if>
+      <if test="lcheadlampdelayoff != null">
+        LCHeadlampdelayoff,
+      </if>
+      <if test="lctouchreadinglamp != null">
+        LCTouchreadinglamp,
+      </if>
+      <if test="lcinteriorambiencelight != null">
+        LCInteriorambiencelight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lclowbeamlightsource != null">
+        #{lclowbeamlightsource,jdbcType=VARCHAR},
+      </if>
+      <if test="lchighbeamlightsource != null">
+        #{lchighbeamlightsource,jdbcType=VARCHAR},
+      </if>
+      <if test="lclightingfeatures != null">
+        #{lclightingfeatures,jdbcType=VARCHAR},
+      </if>
+      <if test="lcleddaytimerunlight != null">
+        #{lcleddaytimerunlight,jdbcType=VARCHAR},
+      </if>
+      <if test="lcadaptivehighlowbeam != null">
+        #{lcadaptivehighlowbeam,jdbcType=VARCHAR},
+      </if>
+      <if test="lcautomaticheadlamp != null">
+        #{lcautomaticheadlamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcsteeringassistlamp != null">
+        #{lcsteeringassistlamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcturnheadlamp != null">
+        #{lcturnheadlamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcfrontfoglamp != null">
+        #{lcfrontfoglamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcheadlamprainmode != null">
+        #{lcheadlamprainmode,jdbcType=VARCHAR},
+      </if>
+      <if test="lcadjustableheadlightheight != null">
+        #{lcadjustableheadlightheight,jdbcType=VARCHAR},
+      </if>
+      <if test="lcheadlightcleaningdevice != null">
+        #{lcheadlightcleaningdevice,jdbcType=VARCHAR},
+      </if>
+      <if test="lcheadlampdelayoff != null">
+        #{lcheadlampdelayoff,jdbcType=VARCHAR},
+      </if>
+      <if test="lctouchreadinglamp != null">
+        #{lctouchreadinglamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcinteriorambiencelight != null">
+        #{lcinteriorambiencelight,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Lightingconfig">
+    update lightingconfig
+    <set>
+      <if test="lclowbeamlightsource != null">
+        LCLowbeamlightsource = #{lclowbeamlightsource,jdbcType=VARCHAR},
+      </if>
+      <if test="lchighbeamlightsource != null">
+        LCHighbeamlightsource = #{lchighbeamlightsource,jdbcType=VARCHAR},
+      </if>
+      <if test="lclightingfeatures != null">
+        LCLightingfeatures = #{lclightingfeatures,jdbcType=VARCHAR},
+      </if>
+      <if test="lcleddaytimerunlight != null">
+        LCLEDdaytimerunlight = #{lcleddaytimerunlight,jdbcType=VARCHAR},
+      </if>
+      <if test="lcadaptivehighlowbeam != null">
+        LCAdaptivehighlowbeam = #{lcadaptivehighlowbeam,jdbcType=VARCHAR},
+      </if>
+      <if test="lcautomaticheadlamp != null">
+        LCAutomaticheadlamp = #{lcautomaticheadlamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcsteeringassistlamp != null">
+        LCSteeringassistlamp = #{lcsteeringassistlamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcturnheadlamp != null">
+        LCTurnheadlamp = #{lcturnheadlamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcfrontfoglamp != null">
+        LCFrontfoglamp = #{lcfrontfoglamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcheadlamprainmode != null">
+        LCHeadlamprainmode = #{lcheadlamprainmode,jdbcType=VARCHAR},
+      </if>
+      <if test="lcadjustableheadlightheight != null">
+        LCAdjustableheadlightheight = #{lcadjustableheadlightheight,jdbcType=VARCHAR},
+      </if>
+      <if test="lcheadlightcleaningdevice != null">
+        LCHeadlightcleaningdevice = #{lcheadlightcleaningdevice,jdbcType=VARCHAR},
+      </if>
+      <if test="lcheadlampdelayoff != null">
+        LCHeadlampdelayoff = #{lcheadlampdelayoff,jdbcType=VARCHAR},
+      </if>
+      <if test="lctouchreadinglamp != null">
+        LCTouchreadinglamp = #{lctouchreadinglamp,jdbcType=VARCHAR},
+      </if>
+      <if test="lcinteriorambiencelight != null">
+        LCInteriorambiencelight = #{lcinteriorambiencelight,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LCID = #{lcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Lightingconfig">
+    update lightingconfig
+    set LCLowbeamlightsource = #{lclowbeamlightsource,jdbcType=VARCHAR},
+      LCHighbeamlightsource = #{lchighbeamlightsource,jdbcType=VARCHAR},
+      LCLightingfeatures = #{lclightingfeatures,jdbcType=VARCHAR},
+      LCLEDdaytimerunlight = #{lcleddaytimerunlight,jdbcType=VARCHAR},
+      LCAdaptivehighlowbeam = #{lcadaptivehighlowbeam,jdbcType=VARCHAR},
+      LCAutomaticheadlamp = #{lcautomaticheadlamp,jdbcType=VARCHAR},
+      LCSteeringassistlamp = #{lcsteeringassistlamp,jdbcType=VARCHAR},
+      LCTurnheadlamp = #{lcturnheadlamp,jdbcType=VARCHAR},
+      LCFrontfoglamp = #{lcfrontfoglamp,jdbcType=VARCHAR},
+      LCHeadlamprainmode = #{lcheadlamprainmode,jdbcType=VARCHAR},
+      LCAdjustableheadlightheight = #{lcadjustableheadlightheight,jdbcType=VARCHAR},
+      LCHeadlightcleaningdevice = #{lcheadlightcleaningdevice,jdbcType=VARCHAR},
+      LCHeadlampdelayoff = #{lcheadlampdelayoff,jdbcType=VARCHAR},
+      LCTouchreadinglamp = #{lctouchreadinglamp,jdbcType=VARCHAR},
+      LCInteriorambiencelight = #{lcinteriorambiencelight,jdbcType=VARCHAR}
+    where LCID = #{lcid,jdbcType=INTEGER}
+  </update>
+</mapper>

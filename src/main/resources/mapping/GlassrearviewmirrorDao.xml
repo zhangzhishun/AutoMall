@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.GlassrearviewmirrorDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Glassrearviewmirror">
+    <id column="GRMID" jdbcType="INTEGER" property="grmid" />
+    <result column="GRMElectricwindow" jdbcType="VARCHAR" property="grmelectricwindow" />
+    <result column="GRMOnebuttonwindowlifting" jdbcType="VARCHAR" property="grmonebuttonwindowlifting" />
+    <result column="GRMWindowantipinch" jdbcType="VARCHAR" property="grmwindowantipinch" />
+    <result column="GRMMultilayersoundproofglass" jdbcType="VARCHAR" property="grmmultilayersoundproofglass" />
+    <result column="GRMExteriormirror" jdbcType="VARCHAR" property="grmexteriormirror" />
+    <result column="GRMInteriormirror" jdbcType="VARCHAR" property="grminteriormirror" />
+    <result column="GRMRearwindshieldblind" jdbcType="VARCHAR" property="grmrearwindshieldblind" />
+    <result column="GRMRearsidewindowblind" jdbcType="VARCHAR" property="grmrearsidewindowblind" />
+    <result column="GRMRearsideprivacyglass" jdbcType="VARCHAR" property="grmrearsideprivacyglass" />
+    <result column="GRMInteriorvanitymirror" jdbcType="VARCHAR" property="grminteriorvanitymirror" />
+    <result column="GRMRearwiper" jdbcType="VARCHAR" property="grmrearwiper" />
+    <result column="GRMSensingwiper" jdbcType="VARCHAR" property="grmsensingwiper" />
+    <result column="GMRHeatedPenshui" jdbcType="VARCHAR" property="gmrheatedpenshui" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    GRMID, GRMElectricwindow, GRMOnebuttonwindowlifting, GRMWindowantipinch, GRMMultilayersoundproofglass, 
+    GRMExteriormirror, GRMInteriormirror, GRMRearwindshieldblind, GRMRearsidewindowblind, 
+    GRMRearsideprivacyglass, GRMInteriorvanitymirror, GRMRearwiper, GRMSensingwiper, 
+    GMRHeatedPenshui
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from glassrearviewmirror
+    where GRMID = #{grmid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from glassrearviewmirror
+    where GRMID = #{grmid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="GRMID" keyProperty="grmid" parameterType="com.springboot.entity.Glassrearviewmirror" useGeneratedKeys="true">
+    insert into glassrearviewmirror (GRMElectricwindow, GRMOnebuttonwindowlifting, 
+      GRMWindowantipinch, GRMMultilayersoundproofglass, 
+      GRMExteriormirror, GRMInteriormirror, GRMRearwindshieldblind, 
+      GRMRearsidewindowblind, GRMRearsideprivacyglass, 
+      GRMInteriorvanitymirror, GRMRearwiper, 
+      GRMSensingwiper, GMRHeatedPenshui)
+    values (#{grmelectricwindow,jdbcType=VARCHAR}, #{grmonebuttonwindowlifting,jdbcType=VARCHAR}, 
+      #{grmwindowantipinch,jdbcType=VARCHAR}, #{grmmultilayersoundproofglass,jdbcType=VARCHAR}, 
+      #{grmexteriormirror,jdbcType=VARCHAR}, #{grminteriormirror,jdbcType=VARCHAR}, #{grmrearwindshieldblind,jdbcType=VARCHAR}, 
+      #{grmrearsidewindowblind,jdbcType=VARCHAR}, #{grmrearsideprivacyglass,jdbcType=VARCHAR}, 
+      #{grminteriorvanitymirror,jdbcType=VARCHAR}, #{grmrearwiper,jdbcType=VARCHAR}, 
+      #{grmsensingwiper,jdbcType=VARCHAR}, #{gmrheatedpenshui,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="GRMID" keyProperty="grmid" parameterType="com.springboot.entity.Glassrearviewmirror" useGeneratedKeys="true">
+    insert into glassrearviewmirror
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="grmelectricwindow != null">
+        GRMElectricwindow,
+      </if>
+      <if test="grmonebuttonwindowlifting != null">
+        GRMOnebuttonwindowlifting,
+      </if>
+      <if test="grmwindowantipinch != null">
+        GRMWindowantipinch,
+      </if>
+      <if test="grmmultilayersoundproofglass != null">
+        GRMMultilayersoundproofglass,
+      </if>
+      <if test="grmexteriormirror != null">
+        GRMExteriormirror,
+      </if>
+      <if test="grminteriormirror != null">
+        GRMInteriormirror,
+      </if>
+      <if test="grmrearwindshieldblind != null">
+        GRMRearwindshieldblind,
+      </if>
+      <if test="grmrearsidewindowblind != null">
+        GRMRearsidewindowblind,
+      </if>
+      <if test="grmrearsideprivacyglass != null">
+        GRMRearsideprivacyglass,
+      </if>
+      <if test="grminteriorvanitymirror != null">
+        GRMInteriorvanitymirror,
+      </if>
+      <if test="grmrearwiper != null">
+        GRMRearwiper,
+      </if>
+      <if test="grmsensingwiper != null">
+        GRMSensingwiper,
+      </if>
+      <if test="gmrheatedpenshui != null">
+        GMRHeatedPenshui,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="grmelectricwindow != null">
+        #{grmelectricwindow,jdbcType=VARCHAR},
+      </if>
+      <if test="grmonebuttonwindowlifting != null">
+        #{grmonebuttonwindowlifting,jdbcType=VARCHAR},
+      </if>
+      <if test="grmwindowantipinch != null">
+        #{grmwindowantipinch,jdbcType=VARCHAR},
+      </if>
+      <if test="grmmultilayersoundproofglass != null">
+        #{grmmultilayersoundproofglass,jdbcType=VARCHAR},
+      </if>
+      <if test="grmexteriormirror != null">
+        #{grmexteriormirror,jdbcType=VARCHAR},
+      </if>
+      <if test="grminteriormirror != null">
+        #{grminteriormirror,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearwindshieldblind != null">
+        #{grmrearwindshieldblind,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearsidewindowblind != null">
+        #{grmrearsidewindowblind,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearsideprivacyglass != null">
+        #{grmrearsideprivacyglass,jdbcType=VARCHAR},
+      </if>
+      <if test="grminteriorvanitymirror != null">
+        #{grminteriorvanitymirror,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearwiper != null">
+        #{grmrearwiper,jdbcType=VARCHAR},
+      </if>
+      <if test="grmsensingwiper != null">
+        #{grmsensingwiper,jdbcType=VARCHAR},
+      </if>
+      <if test="gmrheatedpenshui != null">
+        #{gmrheatedpenshui,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Glassrearviewmirror">
+    update glassrearviewmirror
+    <set>
+      <if test="grmelectricwindow != null">
+        GRMElectricwindow = #{grmelectricwindow,jdbcType=VARCHAR},
+      </if>
+      <if test="grmonebuttonwindowlifting != null">
+        GRMOnebuttonwindowlifting = #{grmonebuttonwindowlifting,jdbcType=VARCHAR},
+      </if>
+      <if test="grmwindowantipinch != null">
+        GRMWindowantipinch = #{grmwindowantipinch,jdbcType=VARCHAR},
+      </if>
+      <if test="grmmultilayersoundproofglass != null">
+        GRMMultilayersoundproofglass = #{grmmultilayersoundproofglass,jdbcType=VARCHAR},
+      </if>
+      <if test="grmexteriormirror != null">
+        GRMExteriormirror = #{grmexteriormirror,jdbcType=VARCHAR},
+      </if>
+      <if test="grminteriormirror != null">
+        GRMInteriormirror = #{grminteriormirror,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearwindshieldblind != null">
+        GRMRearwindshieldblind = #{grmrearwindshieldblind,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearsidewindowblind != null">
+        GRMRearsidewindowblind = #{grmrearsidewindowblind,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearsideprivacyglass != null">
+        GRMRearsideprivacyglass = #{grmrearsideprivacyglass,jdbcType=VARCHAR},
+      </if>
+      <if test="grminteriorvanitymirror != null">
+        GRMInteriorvanitymirror = #{grminteriorvanitymirror,jdbcType=VARCHAR},
+      </if>
+      <if test="grmrearwiper != null">
+        GRMRearwiper = #{grmrearwiper,jdbcType=VARCHAR},
+      </if>
+      <if test="grmsensingwiper != null">
+        GRMSensingwiper = #{grmsensingwiper,jdbcType=VARCHAR},
+      </if>
+      <if test="gmrheatedpenshui != null">
+        GMRHeatedPenshui = #{gmrheatedpenshui,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GRMID = #{grmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Glassrearviewmirror">
+    update glassrearviewmirror
+    set GRMElectricwindow = #{grmelectricwindow,jdbcType=VARCHAR},
+      GRMOnebuttonwindowlifting = #{grmonebuttonwindowlifting,jdbcType=VARCHAR},
+      GRMWindowantipinch = #{grmwindowantipinch,jdbcType=VARCHAR},
+      GRMMultilayersoundproofglass = #{grmmultilayersoundproofglass,jdbcType=VARCHAR},
+      GRMExteriormirror = #{grmexteriormirror,jdbcType=VARCHAR},
+      GRMInteriormirror = #{grminteriormirror,jdbcType=VARCHAR},
+      GRMRearwindshieldblind = #{grmrearwindshieldblind,jdbcType=VARCHAR},
+      GRMRearsidewindowblind = #{grmrearsidewindowblind,jdbcType=VARCHAR},
+      GRMRearsideprivacyglass = #{grmrearsideprivacyglass,jdbcType=VARCHAR},
+      GRMInteriorvanitymirror = #{grminteriorvanitymirror,jdbcType=VARCHAR},
+      GRMRearwiper = #{grmrearwiper,jdbcType=VARCHAR},
+      GRMSensingwiper = #{grmsensingwiper,jdbcType=VARCHAR},
+      GMRHeatedPenshui = #{gmrheatedpenshui,jdbcType=VARCHAR}
+    where GRMID = #{grmid,jdbcType=INTEGER}
+  </update>
+</mapper>

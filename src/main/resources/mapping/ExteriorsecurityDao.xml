@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.ExteriorsecurityDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Exteriorsecurity">
+    <id column="ESID" jdbcType="INTEGER" property="esid" />
+    <result column="ESSkylightType" jdbcType="VARCHAR" property="esskylighttype" />
+    <result column="ESSportsPackage" jdbcType="VARCHAR" property="essportspackage" />
+    <result column="ESRimMaterial" jdbcType="VARCHAR" property="esrimmaterial" />
+    <result column="ESElectricSuctionDoor" jdbcType="VARCHAR" property="eselectricsuctiondoor" />
+    <result column="ESSlidingDoorType" jdbcType="VARCHAR" property="esslidingdoortype" />
+    <result column="ESElectricTrunk" jdbcType="VARCHAR" property="eselectrictrunk" />
+    <result column="ESInductionTrunk" jdbcType="VARCHAR" property="esinductiontrunk" />
+    <result column="ESElectricTrunkLocationMemory" jdbcType="VARCHAR" property="eselectrictrunklocationmemory" />
+    <result column="ESSternDoorGlassOpensIndependently" jdbcType="VARCHAR" property="essterndoorglassopensindependently" />
+    <result column="ESRoofRack" jdbcType="VARCHAR" property="esroofrack" />
+    <result column="ESEngineElectronicTheft" jdbcType="VARCHAR" property="esengineelectronictheft" />
+    <result column="ESInteriorControlLock" jdbcType="VARCHAR" property="esinteriorcontrollock" />
+    <result column="ESKeyType" jdbcType="VARCHAR" property="eskeytype" />
+    <result column="ESKeylessStart" jdbcType="VARCHAR" property="eskeylessstart" />
+    <result column="ESKeylessEntry" jdbcType="VARCHAR" property="eskeylessentry" />
+    <result column="ESActiveClosedIntakeGrille" jdbcType="VARCHAR" property="esactiveclosedintakegrille" />
+    <result column="ESRemoteStart" jdbcType="VARCHAR" property="esremotestart" />
+    <result column="ESSidePedal" jdbcType="VARCHAR" property="essidepedal" />
+    <result column="ESBatteryPreheating" jdbcType="VARCHAR" property="esbatterypreheating" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ESID, ESSkylightType, ESSportsPackage, ESRimMaterial, ESElectricSuctionDoor, ESSlidingDoorType, 
+    ESElectricTrunk, ESInductionTrunk, ESElectricTrunkLocationMemory, ESSternDoorGlassOpensIndependently, 
+    ESRoofRack, ESEngineElectronicTheft, ESInteriorControlLock, ESKeyType, ESKeylessStart, 
+    ESKeylessEntry, ESActiveClosedIntakeGrille, ESRemoteStart, ESSidePedal, ESBatteryPreheating
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from exteriorsecurity
+    where ESID = #{esid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from exteriorsecurity
+    where ESID = #{esid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="ESID" keyProperty="esid" parameterType="com.springboot.entity.Exteriorsecurity" useGeneratedKeys="true">
+    insert into exteriorsecurity (ESSkylightType, ESSportsPackage, 
+      ESRimMaterial, ESElectricSuctionDoor, ESSlidingDoorType, 
+      ESElectricTrunk, ESInductionTrunk, ESElectricTrunkLocationMemory, 
+      ESSternDoorGlassOpensIndependently, ESRoofRack, 
+      ESEngineElectronicTheft, ESInteriorControlLock, 
+      ESKeyType, ESKeylessStart, ESKeylessEntry, 
+      ESActiveClosedIntakeGrille, ESRemoteStart, 
+      ESSidePedal, ESBatteryPreheating)
+    values (#{esskylighttype,jdbcType=VARCHAR}, #{essportspackage,jdbcType=VARCHAR}, 
+      #{esrimmaterial,jdbcType=VARCHAR}, #{eselectricsuctiondoor,jdbcType=VARCHAR}, #{esslidingdoortype,jdbcType=VARCHAR}, 
+      #{eselectrictrunk,jdbcType=VARCHAR}, #{esinductiontrunk,jdbcType=VARCHAR}, #{eselectrictrunklocationmemory,jdbcType=VARCHAR}, 
+      #{essterndoorglassopensindependently,jdbcType=VARCHAR}, #{esroofrack,jdbcType=VARCHAR}, 
+      #{esengineelectronictheft,jdbcType=VARCHAR}, #{esinteriorcontrollock,jdbcType=VARCHAR}, 
+      #{eskeytype,jdbcType=VARCHAR}, #{eskeylessstart,jdbcType=VARCHAR}, #{eskeylessentry,jdbcType=VARCHAR}, 
+      #{esactiveclosedintakegrille,jdbcType=VARCHAR}, #{esremotestart,jdbcType=VARCHAR}, 
+      #{essidepedal,jdbcType=VARCHAR}, #{esbatterypreheating,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="ESID" keyProperty="esid" parameterType="com.springboot.entity.Exteriorsecurity" useGeneratedKeys="true">
+    insert into exteriorsecurity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="esskylighttype != null">
+        ESSkylightType,
+      </if>
+      <if test="essportspackage != null">
+        ESSportsPackage,
+      </if>
+      <if test="esrimmaterial != null">
+        ESRimMaterial,
+      </if>
+      <if test="eselectricsuctiondoor != null">
+        ESElectricSuctionDoor,
+      </if>
+      <if test="esslidingdoortype != null">
+        ESSlidingDoorType,
+      </if>
+      <if test="eselectrictrunk != null">
+        ESElectricTrunk,
+      </if>
+      <if test="esinductiontrunk != null">
+        ESInductionTrunk,
+      </if>
+      <if test="eselectrictrunklocationmemory != null">
+        ESElectricTrunkLocationMemory,
+      </if>
+      <if test="essterndoorglassopensindependently != null">
+        ESSternDoorGlassOpensIndependently,
+      </if>
+      <if test="esroofrack != null">
+        ESRoofRack,
+      </if>
+      <if test="esengineelectronictheft != null">
+        ESEngineElectronicTheft,
+      </if>
+      <if test="esinteriorcontrollock != null">
+        ESInteriorControlLock,
+      </if>
+      <if test="eskeytype != null">
+        ESKeyType,
+      </if>
+      <if test="eskeylessstart != null">
+        ESKeylessStart,
+      </if>
+      <if test="eskeylessentry != null">
+        ESKeylessEntry,
+      </if>
+      <if test="esactiveclosedintakegrille != null">
+        ESActiveClosedIntakeGrille,
+      </if>
+      <if test="esremotestart != null">
+        ESRemoteStart,
+      </if>
+      <if test="essidepedal != null">
+        ESSidePedal,
+      </if>
+      <if test="esbatterypreheating != null">
+        ESBatteryPreheating,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="esskylighttype != null">
+        #{esskylighttype,jdbcType=VARCHAR},
+      </if>
+      <if test="essportspackage != null">
+        #{essportspackage,jdbcType=VARCHAR},
+      </if>
+      <if test="esrimmaterial != null">
+        #{esrimmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="eselectricsuctiondoor != null">
+        #{eselectricsuctiondoor,jdbcType=VARCHAR},
+      </if>
+      <if test="esslidingdoortype != null">
+        #{esslidingdoortype,jdbcType=VARCHAR},
+      </if>
+      <if test="eselectrictrunk != null">
+        #{eselectrictrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="esinductiontrunk != null">
+        #{esinductiontrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="eselectrictrunklocationmemory != null">
+        #{eselectrictrunklocationmemory,jdbcType=VARCHAR},
+      </if>
+      <if test="essterndoorglassopensindependently != null">
+        #{essterndoorglassopensindependently,jdbcType=VARCHAR},
+      </if>
+      <if test="esroofrack != null">
+        #{esroofrack,jdbcType=VARCHAR},
+      </if>
+      <if test="esengineelectronictheft != null">
+        #{esengineelectronictheft,jdbcType=VARCHAR},
+      </if>
+      <if test="esinteriorcontrollock != null">
+        #{esinteriorcontrollock,jdbcType=VARCHAR},
+      </if>
+      <if test="eskeytype != null">
+        #{eskeytype,jdbcType=VARCHAR},
+      </if>
+      <if test="eskeylessstart != null">
+        #{eskeylessstart,jdbcType=VARCHAR},
+      </if>
+      <if test="eskeylessentry != null">
+        #{eskeylessentry,jdbcType=VARCHAR},
+      </if>
+      <if test="esactiveclosedintakegrille != null">
+        #{esactiveclosedintakegrille,jdbcType=VARCHAR},
+      </if>
+      <if test="esremotestart != null">
+        #{esremotestart,jdbcType=VARCHAR},
+      </if>
+      <if test="essidepedal != null">
+        #{essidepedal,jdbcType=VARCHAR},
+      </if>
+      <if test="esbatterypreheating != null">
+        #{esbatterypreheating,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Exteriorsecurity">
+    update exteriorsecurity
+    <set>
+      <if test="esskylighttype != null">
+        ESSkylightType = #{esskylighttype,jdbcType=VARCHAR},
+      </if>
+      <if test="essportspackage != null">
+        ESSportsPackage = #{essportspackage,jdbcType=VARCHAR},
+      </if>
+      <if test="esrimmaterial != null">
+        ESRimMaterial = #{esrimmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="eselectricsuctiondoor != null">
+        ESElectricSuctionDoor = #{eselectricsuctiondoor,jdbcType=VARCHAR},
+      </if>
+      <if test="esslidingdoortype != null">
+        ESSlidingDoorType = #{esslidingdoortype,jdbcType=VARCHAR},
+      </if>
+      <if test="eselectrictrunk != null">
+        ESElectricTrunk = #{eselectrictrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="esinductiontrunk != null">
+        ESInductionTrunk = #{esinductiontrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="eselectrictrunklocationmemory != null">
+        ESElectricTrunkLocationMemory = #{eselectrictrunklocationmemory,jdbcType=VARCHAR},
+      </if>
+      <if test="essterndoorglassopensindependently != null">
+        ESSternDoorGlassOpensIndependently = #{essterndoorglassopensindependently,jdbcType=VARCHAR},
+      </if>
+      <if test="esroofrack != null">
+        ESRoofRack = #{esroofrack,jdbcType=VARCHAR},
+      </if>
+      <if test="esengineelectronictheft != null">
+        ESEngineElectronicTheft = #{esengineelectronictheft,jdbcType=VARCHAR},
+      </if>
+      <if test="esinteriorcontrollock != null">
+        ESInteriorControlLock = #{esinteriorcontrollock,jdbcType=VARCHAR},
+      </if>
+      <if test="eskeytype != null">
+        ESKeyType = #{eskeytype,jdbcType=VARCHAR},
+      </if>
+      <if test="eskeylessstart != null">
+        ESKeylessStart = #{eskeylessstart,jdbcType=VARCHAR},
+      </if>
+      <if test="eskeylessentry != null">
+        ESKeylessEntry = #{eskeylessentry,jdbcType=VARCHAR},
+      </if>
+      <if test="esactiveclosedintakegrille != null">
+        ESActiveClosedIntakeGrille = #{esactiveclosedintakegrille,jdbcType=VARCHAR},
+      </if>
+      <if test="esremotestart != null">
+        ESRemoteStart = #{esremotestart,jdbcType=VARCHAR},
+      </if>
+      <if test="essidepedal != null">
+        ESSidePedal = #{essidepedal,jdbcType=VARCHAR},
+      </if>
+      <if test="esbatterypreheating != null">
+        ESBatteryPreheating = #{esbatterypreheating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ESID = #{esid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Exteriorsecurity">
+    update exteriorsecurity
+    set ESSkylightType = #{esskylighttype,jdbcType=VARCHAR},
+      ESSportsPackage = #{essportspackage,jdbcType=VARCHAR},
+      ESRimMaterial = #{esrimmaterial,jdbcType=VARCHAR},
+      ESElectricSuctionDoor = #{eselectricsuctiondoor,jdbcType=VARCHAR},
+      ESSlidingDoorType = #{esslidingdoortype,jdbcType=VARCHAR},
+      ESElectricTrunk = #{eselectrictrunk,jdbcType=VARCHAR},
+      ESInductionTrunk = #{esinductiontrunk,jdbcType=VARCHAR},
+      ESElectricTrunkLocationMemory = #{eselectrictrunklocationmemory,jdbcType=VARCHAR},
+      ESSternDoorGlassOpensIndependently = #{essterndoorglassopensindependently,jdbcType=VARCHAR},
+      ESRoofRack = #{esroofrack,jdbcType=VARCHAR},
+      ESEngineElectronicTheft = #{esengineelectronictheft,jdbcType=VARCHAR},
+      ESInteriorControlLock = #{esinteriorcontrollock,jdbcType=VARCHAR},
+      ESKeyType = #{eskeytype,jdbcType=VARCHAR},
+      ESKeylessStart = #{eskeylessstart,jdbcType=VARCHAR},
+      ESKeylessEntry = #{eskeylessentry,jdbcType=VARCHAR},
+      ESActiveClosedIntakeGrille = #{esactiveclosedintakegrille,jdbcType=VARCHAR},
+      ESRemoteStart = #{esremotestart,jdbcType=VARCHAR},
+      ESSidePedal = #{essidepedal,jdbcType=VARCHAR},
+      ESBatteryPreheating = #{esbatterypreheating,jdbcType=VARCHAR}
+    where ESID = #{esid,jdbcType=INTEGER}
+  </update>
+</mapper>

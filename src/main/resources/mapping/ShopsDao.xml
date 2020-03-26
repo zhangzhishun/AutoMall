@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.ShopsDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Shops">
+    <id column="shopsId" jdbcType="INTEGER" property="shopsid" />
+    <result column="shopsName" jdbcType="VARCHAR" property="shopsname" />
+    <result column="shopsDis" jdbcType="INTEGER" property="shopsdis" />
+    <result column="shopsIntro" jdbcType="VARCHAR" property="shopsintro" />
+    <result column="shopsStarLevel" jdbcType="INTEGER" property="shopsstarlevel" />
+    <result column="shopsPic" jdbcType="VARCHAR" property="shopspic" />
+    <result column="shopsAvatar" jdbcType="VARCHAR" property="shopsavatar" />
+    <result column="shopsPhone" jdbcType="VARCHAR" property="shopsphone" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shopsId, shopsName, shopsDis, shopsIntro, shopsStarLevel, shopsPic, shopsAvatar, 
+    shopsPhone, userId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shops
+    where shopsId = #{shopsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shops
+    where shopsId = #{shopsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="shopsId" keyProperty="shopsid" parameterType="com.springboot.entity.Shops" useGeneratedKeys="true">
+    insert into shops (shopsName, shopsDis, shopsIntro, 
+      shopsStarLevel, shopsPic, shopsAvatar, 
+      shopsPhone, userId)
+    values (#{shopsname,jdbcType=VARCHAR}, #{shopsdis,jdbcType=INTEGER}, #{shopsintro,jdbcType=VARCHAR}, 
+      #{shopsstarlevel,jdbcType=INTEGER}, #{shopspic,jdbcType=VARCHAR}, #{shopsavatar,jdbcType=VARCHAR}, 
+      #{shopsphone,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="shopsId" keyProperty="shopsid" parameterType="com.springboot.entity.Shops" useGeneratedKeys="true">
+    insert into shops
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopsname != null">
+        shopsName,
+      </if>
+      <if test="shopsdis != null">
+        shopsDis,
+      </if>
+      <if test="shopsintro != null">
+        shopsIntro,
+      </if>
+      <if test="shopsstarlevel != null">
+        shopsStarLevel,
+      </if>
+      <if test="shopspic != null">
+        shopsPic,
+      </if>
+      <if test="shopsavatar != null">
+        shopsAvatar,
+      </if>
+      <if test="shopsphone != null">
+        shopsPhone,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopsname != null">
+        #{shopsname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsdis != null">
+        #{shopsdis,jdbcType=INTEGER},
+      </if>
+      <if test="shopsintro != null">
+        #{shopsintro,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsstarlevel != null">
+        #{shopsstarlevel,jdbcType=INTEGER},
+      </if>
+      <if test="shopspic != null">
+        #{shopspic,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsavatar != null">
+        #{shopsavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsphone != null">
+        #{shopsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Shops">
+    update shops
+    <set>
+      <if test="shopsname != null">
+        shopsName = #{shopsname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsdis != null">
+        shopsDis = #{shopsdis,jdbcType=INTEGER},
+      </if>
+      <if test="shopsintro != null">
+        shopsIntro = #{shopsintro,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsstarlevel != null">
+        shopsStarLevel = #{shopsstarlevel,jdbcType=INTEGER},
+      </if>
+      <if test="shopspic != null">
+        shopsPic = #{shopspic,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsavatar != null">
+        shopsAvatar = #{shopsavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="shopsphone != null">
+        shopsPhone = #{shopsphone,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where shopsId = #{shopsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Shops">
+    update shops
+    set shopsName = #{shopsname,jdbcType=VARCHAR},
+      shopsDis = #{shopsdis,jdbcType=INTEGER},
+      shopsIntro = #{shopsintro,jdbcType=VARCHAR},
+      shopsStarLevel = #{shopsstarlevel,jdbcType=INTEGER},
+      shopsPic = #{shopspic,jdbcType=VARCHAR},
+      shopsAvatar = #{shopsavatar,jdbcType=VARCHAR},
+      shopsPhone = #{shopsphone,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER}
+    where shopsId = #{shopsid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.AuxiliarycontrolDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Auxiliarycontrol">
+    <id column="ACID" jdbcType="INTEGER" property="acid" />
+    <result column="ACParkRadar" jdbcType="VARCHAR" property="acparkradar" />
+    <result column="ACImage" jdbcType="VARCHAR" property="acimage" />
+    <result column="ACAsternSideWarning" jdbcType="VARCHAR" property="acasternsidewarning" />
+    <result column="ACCruiseSystem" jdbcType="VARCHAR" property="accruisesystem" />
+    <result column="ACDrivingModeSwitch" jdbcType="VARCHAR" property="acdrivingmodeswitch" />
+    <result column="ACAtutoParking" jdbcType="VARCHAR" property="acatutoparking" />
+    <result column="ACEngineStartAndStop" jdbcType="VARCHAR" property="acenginestartandstop" />
+    <result column="ACAutoBrake" jdbcType="VARCHAR" property="acautobrake" />
+    <result column="ACUPhillAuxiliary" jdbcType="VARCHAR" property="acuphillauxiliary" />
+    <result column="ACSlowDownTheSteepSlopes" jdbcType="VARCHAR" property="acslowdownthesteepslopes" />
+    <result column="ACVariableSuspension" jdbcType="VARCHAR" property="acvariablesuspension" />
+    <result column="ACAirSuspension" jdbcType="VARCHAR" property="acairsuspension" />
+    <result column="ACElectromagneticInductionSuspension" jdbcType="VARCHAR" property="acelectromagneticinductionsuspension" />
+    <result column="ACVariableSteeringRatio" jdbcType="VARCHAR" property="acvariablesteeringratio" />
+    <result column="ACCentralDifferentialLock" jdbcType="VARCHAR" property="accentraldifferentiallock" />
+    <result column="ACActiveSteering" jdbcType="VARCHAR" property="acactivesteering" />
+    <result column="ACLimitedSlipDifferentialLock" jdbcType="VARCHAR" property="aclimitedslipdifferentiallock" />
+    <result column="ACWadeInduction" jdbcType="VARCHAR" property="acwadeinduction" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ACID, ACParkRadar, ACImage, ACAsternSideWarning, ACCruiseSystem, ACDrivingModeSwitch, 
+    ACAtutoParking, ACEngineStartAndStop, ACAutoBrake, ACUPhillAuxiliary, ACSlowDownTheSteepSlopes, 
+    ACVariableSuspension, ACAirSuspension, ACElectromagneticInductionSuspension, ACVariableSteeringRatio, 
+    ACCentralDifferentialLock, ACActiveSteering, ACLimitedSlipDifferentialLock, ACWadeInduction
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auxiliarycontrol
+    where ACID = #{acid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from auxiliarycontrol
+    where ACID = #{acid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="ACID" keyProperty="acid" parameterType="com.springboot.entity.Auxiliarycontrol" useGeneratedKeys="true">
+    insert into auxiliarycontrol (ACParkRadar, ACImage, ACAsternSideWarning, 
+      ACCruiseSystem, ACDrivingModeSwitch, ACAtutoParking, 
+      ACEngineStartAndStop, ACAutoBrake, ACUPhillAuxiliary, 
+      ACSlowDownTheSteepSlopes, ACVariableSuspension, 
+      ACAirSuspension, ACElectromagneticInductionSuspension, 
+      ACVariableSteeringRatio, ACCentralDifferentialLock, 
+      ACActiveSteering, ACLimitedSlipDifferentialLock, 
+      ACWadeInduction)
+    values (#{acparkradar,jdbcType=VARCHAR}, #{acimage,jdbcType=VARCHAR}, #{acasternsidewarning,jdbcType=VARCHAR}, 
+      #{accruisesystem,jdbcType=VARCHAR}, #{acdrivingmodeswitch,jdbcType=VARCHAR}, #{acatutoparking,jdbcType=VARCHAR}, 
+      #{acenginestartandstop,jdbcType=VARCHAR}, #{acautobrake,jdbcType=VARCHAR}, #{acuphillauxiliary,jdbcType=VARCHAR}, 
+      #{acslowdownthesteepslopes,jdbcType=VARCHAR}, #{acvariablesuspension,jdbcType=VARCHAR}, 
+      #{acairsuspension,jdbcType=VARCHAR}, #{acelectromagneticinductionsuspension,jdbcType=VARCHAR}, 
+      #{acvariablesteeringratio,jdbcType=VARCHAR}, #{accentraldifferentiallock,jdbcType=VARCHAR}, 
+      #{acactivesteering,jdbcType=VARCHAR}, #{aclimitedslipdifferentiallock,jdbcType=VARCHAR}, 
+      #{acwadeinduction,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="ACID" keyProperty="acid" parameterType="com.springboot.entity.Auxiliarycontrol" useGeneratedKeys="true">
+    insert into auxiliarycontrol
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="acparkradar != null">
+        ACParkRadar,
+      </if>
+      <if test="acimage != null">
+        ACImage,
+      </if>
+      <if test="acasternsidewarning != null">
+        ACAsternSideWarning,
+      </if>
+      <if test="accruisesystem != null">
+        ACCruiseSystem,
+      </if>
+      <if test="acdrivingmodeswitch != null">
+        ACDrivingModeSwitch,
+      </if>
+      <if test="acatutoparking != null">
+        ACAtutoParking,
+      </if>
+      <if test="acenginestartandstop != null">
+        ACEngineStartAndStop,
+      </if>
+      <if test="acautobrake != null">
+        ACAutoBrake,
+      </if>
+      <if test="acuphillauxiliary != null">
+        ACUPhillAuxiliary,
+      </if>
+      <if test="acslowdownthesteepslopes != null">
+        ACSlowDownTheSteepSlopes,
+      </if>
+      <if test="acvariablesuspension != null">
+        ACVariableSuspension,
+      </if>
+      <if test="acairsuspension != null">
+        ACAirSuspension,
+      </if>
+      <if test="acelectromagneticinductionsuspension != null">
+        ACElectromagneticInductionSuspension,
+      </if>
+      <if test="acvariablesteeringratio != null">
+        ACVariableSteeringRatio,
+      </if>
+      <if test="accentraldifferentiallock != null">
+        ACCentralDifferentialLock,
+      </if>
+      <if test="acactivesteering != null">
+        ACActiveSteering,
+      </if>
+      <if test="aclimitedslipdifferentiallock != null">
+        ACLimitedSlipDifferentialLock,
+      </if>
+      <if test="acwadeinduction != null">
+        ACWadeInduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="acparkradar != null">
+        #{acparkradar,jdbcType=VARCHAR},
+      </if>
+      <if test="acimage != null">
+        #{acimage,jdbcType=VARCHAR},
+      </if>
+      <if test="acasternsidewarning != null">
+        #{acasternsidewarning,jdbcType=VARCHAR},
+      </if>
+      <if test="accruisesystem != null">
+        #{accruisesystem,jdbcType=VARCHAR},
+      </if>
+      <if test="acdrivingmodeswitch != null">
+        #{acdrivingmodeswitch,jdbcType=VARCHAR},
+      </if>
+      <if test="acatutoparking != null">
+        #{acatutoparking,jdbcType=VARCHAR},
+      </if>
+      <if test="acenginestartandstop != null">
+        #{acenginestartandstop,jdbcType=VARCHAR},
+      </if>
+      <if test="acautobrake != null">
+        #{acautobrake,jdbcType=VARCHAR},
+      </if>
+      <if test="acuphillauxiliary != null">
+        #{acuphillauxiliary,jdbcType=VARCHAR},
+      </if>
+      <if test="acslowdownthesteepslopes != null">
+        #{acslowdownthesteepslopes,jdbcType=VARCHAR},
+      </if>
+      <if test="acvariablesuspension != null">
+        #{acvariablesuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="acairsuspension != null">
+        #{acairsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="acelectromagneticinductionsuspension != null">
+        #{acelectromagneticinductionsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="acvariablesteeringratio != null">
+        #{acvariablesteeringratio,jdbcType=VARCHAR},
+      </if>
+      <if test="accentraldifferentiallock != null">
+        #{accentraldifferentiallock,jdbcType=VARCHAR},
+      </if>
+      <if test="acactivesteering != null">
+        #{acactivesteering,jdbcType=VARCHAR},
+      </if>
+      <if test="aclimitedslipdifferentiallock != null">
+        #{aclimitedslipdifferentiallock,jdbcType=VARCHAR},
+      </if>
+      <if test="acwadeinduction != null">
+        #{acwadeinduction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Auxiliarycontrol">
+    update auxiliarycontrol
+    <set>
+      <if test="acparkradar != null">
+        ACParkRadar = #{acparkradar,jdbcType=VARCHAR},
+      </if>
+      <if test="acimage != null">
+        ACImage = #{acimage,jdbcType=VARCHAR},
+      </if>
+      <if test="acasternsidewarning != null">
+        ACAsternSideWarning = #{acasternsidewarning,jdbcType=VARCHAR},
+      </if>
+      <if test="accruisesystem != null">
+        ACCruiseSystem = #{accruisesystem,jdbcType=VARCHAR},
+      </if>
+      <if test="acdrivingmodeswitch != null">
+        ACDrivingModeSwitch = #{acdrivingmodeswitch,jdbcType=VARCHAR},
+      </if>
+      <if test="acatutoparking != null">
+        ACAtutoParking = #{acatutoparking,jdbcType=VARCHAR},
+      </if>
+      <if test="acenginestartandstop != null">
+        ACEngineStartAndStop = #{acenginestartandstop,jdbcType=VARCHAR},
+      </if>
+      <if test="acautobrake != null">
+        ACAutoBrake = #{acautobrake,jdbcType=VARCHAR},
+      </if>
+      <if test="acuphillauxiliary != null">
+        ACUPhillAuxiliary = #{acuphillauxiliary,jdbcType=VARCHAR},
+      </if>
+      <if test="acslowdownthesteepslopes != null">
+        ACSlowDownTheSteepSlopes = #{acslowdownthesteepslopes,jdbcType=VARCHAR},
+      </if>
+      <if test="acvariablesuspension != null">
+        ACVariableSuspension = #{acvariablesuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="acairsuspension != null">
+        ACAirSuspension = #{acairsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="acelectromagneticinductionsuspension != null">
+        ACElectromagneticInductionSuspension = #{acelectromagneticinductionsuspension,jdbcType=VARCHAR},
+      </if>
+      <if test="acvariablesteeringratio != null">
+        ACVariableSteeringRatio = #{acvariablesteeringratio,jdbcType=VARCHAR},
+      </if>
+      <if test="accentraldifferentiallock != null">
+        ACCentralDifferentialLock = #{accentraldifferentiallock,jdbcType=VARCHAR},
+      </if>
+      <if test="acactivesteering != null">
+        ACActiveSteering = #{acactivesteering,jdbcType=VARCHAR},
+      </if>
+      <if test="aclimitedslipdifferentiallock != null">
+        ACLimitedSlipDifferentialLock = #{aclimitedslipdifferentiallock,jdbcType=VARCHAR},
+      </if>
+      <if test="acwadeinduction != null">
+        ACWadeInduction = #{acwadeinduction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ACID = #{acid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Auxiliarycontrol">
+    update auxiliarycontrol
+    set ACParkRadar = #{acparkradar,jdbcType=VARCHAR},
+      ACImage = #{acimage,jdbcType=VARCHAR},
+      ACAsternSideWarning = #{acasternsidewarning,jdbcType=VARCHAR},
+      ACCruiseSystem = #{accruisesystem,jdbcType=VARCHAR},
+      ACDrivingModeSwitch = #{acdrivingmodeswitch,jdbcType=VARCHAR},
+      ACAtutoParking = #{acatutoparking,jdbcType=VARCHAR},
+      ACEngineStartAndStop = #{acenginestartandstop,jdbcType=VARCHAR},
+      ACAutoBrake = #{acautobrake,jdbcType=VARCHAR},
+      ACUPhillAuxiliary = #{acuphillauxiliary,jdbcType=VARCHAR},
+      ACSlowDownTheSteepSlopes = #{acslowdownthesteepslopes,jdbcType=VARCHAR},
+      ACVariableSuspension = #{acvariablesuspension,jdbcType=VARCHAR},
+      ACAirSuspension = #{acairsuspension,jdbcType=VARCHAR},
+      ACElectromagneticInductionSuspension = #{acelectromagneticinductionsuspension,jdbcType=VARCHAR},
+      ACVariableSteeringRatio = #{acvariablesteeringratio,jdbcType=VARCHAR},
+      ACCentralDifferentialLock = #{accentraldifferentiallock,jdbcType=VARCHAR},
+      ACActiveSteering = #{acactivesteering,jdbcType=VARCHAR},
+      ACLimitedSlipDifferentialLock = #{aclimitedslipdifferentiallock,jdbcType=VARCHAR},
+      ACWadeInduction = #{acwadeinduction,jdbcType=VARCHAR}
+    where ACID = #{acid,jdbcType=INTEGER}
+  </update>
+</mapper>

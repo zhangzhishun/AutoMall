@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.ElectricmotorDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Electricmotor">
+    <id column="EMID" jdbcType="INTEGER" property="emid" />
+    <result column="EMtype" jdbcType="VARCHAR" property="emtype" />
+    <result column="EMaggregatecapacity" jdbcType="VARCHAR" property="emaggregatecapacity" />
+    <result column="EMTotaltorque" jdbcType="VARCHAR" property="emtotaltorque" />
+    <result column="EMMaxpowerfrontmotor" jdbcType="VARCHAR" property="emmaxpowerfrontmotor" />
+    <result column="EMMaxtorquefrontmotor" jdbcType="VARCHAR" property="emmaxtorquefrontmotor" />
+    <result column="EMMaxpowerrearmotor" jdbcType="VARCHAR" property="emmaxpowerrearmotor" />
+    <result column="EMMaxtorquerearmotor" jdbcType="VARCHAR" property="emmaxtorquerearmotor" />
+    <result column="EMSystemIntegratedPower" jdbcType="VARCHAR" property="emsystemintegratedpower" />
+    <result column="EMIntegratedtorquesys" jdbcType="VARCHAR" property="emintegratedtorquesys" />
+    <result column="EMNumbermotordrivers" jdbcType="INTEGER" property="emnumbermotordrivers" />
+    <result column="EMMotorlayout" jdbcType="VARCHAR" property="emmotorlayout" />
+    <result column="EMBatteryType" jdbcType="VARCHAR" property="embatterytype" />
+    <result column="EMPurerange" jdbcType="VARCHAR" property="empurerange" />
+    <result column="EMenergycontentofbattery" jdbcType="VARCHAR" property="emenergycontentofbattery" />
+    <result column="EM100kmelectricityconsumption" jdbcType="VARCHAR" property="em100kmelectricityconsumption" />
+    <result column="EMBatterypackwarranty" jdbcType="VARCHAR" property="embatterypackwarranty" />
+    <result column="EMQuickCharge" jdbcType="VARCHAR" property="emquickcharge" />
+    <result column="EMSlowChargeTime" jdbcType="VARCHAR" property="emslowchargetime" />
+    <result column="EMFast charge" jdbcType="VARCHAR" property="emfastCharge" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EMID, EMtype, EMaggregatecapacity, EMTotaltorque, EMMaxpowerfrontmotor, EMMaxtorquefrontmotor, 
+    EMMaxpowerrearmotor, EMMaxtorquerearmotor, EMSystemIntegratedPower, EMIntegratedtorquesys, 
+    EMNumbermotordrivers, EMMotorlayout, EMBatteryType, EMPurerange, EMenergycontentofbattery, 
+    EM100kmelectricityconsumption, EMBatterypackwarranty, EMQuickCharge, EMSlowChargeTime, 
+    `EMFast charge`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from electricmotor
+    where EMID = #{emid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from electricmotor
+    where EMID = #{emid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="EMID" keyProperty="emid" parameterType="com.springboot.entity.Electricmotor" useGeneratedKeys="true">
+    insert into electricmotor (EMtype, EMaggregatecapacity, EMTotaltorque, 
+      EMMaxpowerfrontmotor, EMMaxtorquefrontmotor, 
+      EMMaxpowerrearmotor, EMMaxtorquerearmotor, 
+      EMSystemIntegratedPower, EMIntegratedtorquesys, 
+      EMNumbermotordrivers, EMMotorlayout, EMBatteryType, 
+      EMPurerange, EMenergycontentofbattery, 
+      EM100kmelectricityconsumption, EMBatterypackwarranty, 
+      EMQuickCharge, EMSlowChargeTime, `EMFast charge`
+      )
+    values (#{emtype,jdbcType=VARCHAR}, #{emaggregatecapacity,jdbcType=VARCHAR}, #{emtotaltorque,jdbcType=VARCHAR}, 
+      #{emmaxpowerfrontmotor,jdbcType=VARCHAR}, #{emmaxtorquefrontmotor,jdbcType=VARCHAR}, 
+      #{emmaxpowerrearmotor,jdbcType=VARCHAR}, #{emmaxtorquerearmotor,jdbcType=VARCHAR}, 
+      #{emsystemintegratedpower,jdbcType=VARCHAR}, #{emintegratedtorquesys,jdbcType=VARCHAR}, 
+      #{emnumbermotordrivers,jdbcType=INTEGER}, #{emmotorlayout,jdbcType=VARCHAR}, #{embatterytype,jdbcType=VARCHAR}, 
+      #{empurerange,jdbcType=VARCHAR}, #{emenergycontentofbattery,jdbcType=VARCHAR}, 
+      #{em100kmelectricityconsumption,jdbcType=VARCHAR}, #{embatterypackwarranty,jdbcType=VARCHAR}, 
+      #{emquickcharge,jdbcType=VARCHAR}, #{emslowchargetime,jdbcType=VARCHAR}, #{emfastCharge,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="EMID" keyProperty="emid" parameterType="com.springboot.entity.Electricmotor" useGeneratedKeys="true">
+    insert into electricmotor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="emtype != null">
+        EMtype,
+      </if>
+      <if test="emaggregatecapacity != null">
+        EMaggregatecapacity,
+      </if>
+      <if test="emtotaltorque != null">
+        EMTotaltorque,
+      </if>
+      <if test="emmaxpowerfrontmotor != null">
+        EMMaxpowerfrontmotor,
+      </if>
+      <if test="emmaxtorquefrontmotor != null">
+        EMMaxtorquefrontmotor,
+      </if>
+      <if test="emmaxpowerrearmotor != null">
+        EMMaxpowerrearmotor,
+      </if>
+      <if test="emmaxtorquerearmotor != null">
+        EMMaxtorquerearmotor,
+      </if>
+      <if test="emsystemintegratedpower != null">
+        EMSystemIntegratedPower,
+      </if>
+      <if test="emintegratedtorquesys != null">
+        EMIntegratedtorquesys,
+      </if>
+      <if test="emnumbermotordrivers != null">
+        EMNumbermotordrivers,
+      </if>
+      <if test="emmotorlayout != null">
+        EMMotorlayout,
+      </if>
+      <if test="embatterytype != null">
+        EMBatteryType,
+      </if>
+      <if test="empurerange != null">
+        EMPurerange,
+      </if>
+      <if test="emenergycontentofbattery != null">
+        EMenergycontentofbattery,
+      </if>
+      <if test="em100kmelectricityconsumption != null">
+        EM100kmelectricityconsumption,
+      </if>
+      <if test="embatterypackwarranty != null">
+        EMBatterypackwarranty,
+      </if>
+      <if test="emquickcharge != null">
+        EMQuickCharge,
+      </if>
+      <if test="emslowchargetime != null">
+        EMSlowChargeTime,
+      </if>
+      <if test="emfastCharge != null">
+        `EMFast charge`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="emtype != null">
+        #{emtype,jdbcType=VARCHAR},
+      </if>
+      <if test="emaggregatecapacity != null">
+        #{emaggregatecapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="emtotaltorque != null">
+        #{emtotaltorque,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxpowerfrontmotor != null">
+        #{emmaxpowerfrontmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxtorquefrontmotor != null">
+        #{emmaxtorquefrontmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxpowerrearmotor != null">
+        #{emmaxpowerrearmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxtorquerearmotor != null">
+        #{emmaxtorquerearmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emsystemintegratedpower != null">
+        #{emsystemintegratedpower,jdbcType=VARCHAR},
+      </if>
+      <if test="emintegratedtorquesys != null">
+        #{emintegratedtorquesys,jdbcType=VARCHAR},
+      </if>
+      <if test="emnumbermotordrivers != null">
+        #{emnumbermotordrivers,jdbcType=INTEGER},
+      </if>
+      <if test="emmotorlayout != null">
+        #{emmotorlayout,jdbcType=VARCHAR},
+      </if>
+      <if test="embatterytype != null">
+        #{embatterytype,jdbcType=VARCHAR},
+      </if>
+      <if test="empurerange != null">
+        #{empurerange,jdbcType=VARCHAR},
+      </if>
+      <if test="emenergycontentofbattery != null">
+        #{emenergycontentofbattery,jdbcType=VARCHAR},
+      </if>
+      <if test="em100kmelectricityconsumption != null">
+        #{em100kmelectricityconsumption,jdbcType=VARCHAR},
+      </if>
+      <if test="embatterypackwarranty != null">
+        #{embatterypackwarranty,jdbcType=VARCHAR},
+      </if>
+      <if test="emquickcharge != null">
+        #{emquickcharge,jdbcType=VARCHAR},
+      </if>
+      <if test="emslowchargetime != null">
+        #{emslowchargetime,jdbcType=VARCHAR},
+      </if>
+      <if test="emfastCharge != null">
+        #{emfastCharge,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Electricmotor">
+    update electricmotor
+    <set>
+      <if test="emtype != null">
+        EMtype = #{emtype,jdbcType=VARCHAR},
+      </if>
+      <if test="emaggregatecapacity != null">
+        EMaggregatecapacity = #{emaggregatecapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="emtotaltorque != null">
+        EMTotaltorque = #{emtotaltorque,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxpowerfrontmotor != null">
+        EMMaxpowerfrontmotor = #{emmaxpowerfrontmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxtorquefrontmotor != null">
+        EMMaxtorquefrontmotor = #{emmaxtorquefrontmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxpowerrearmotor != null">
+        EMMaxpowerrearmotor = #{emmaxpowerrearmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emmaxtorquerearmotor != null">
+        EMMaxtorquerearmotor = #{emmaxtorquerearmotor,jdbcType=VARCHAR},
+      </if>
+      <if test="emsystemintegratedpower != null">
+        EMSystemIntegratedPower = #{emsystemintegratedpower,jdbcType=VARCHAR},
+      </if>
+      <if test="emintegratedtorquesys != null">
+        EMIntegratedtorquesys = #{emintegratedtorquesys,jdbcType=VARCHAR},
+      </if>
+      <if test="emnumbermotordrivers != null">
+        EMNumbermotordrivers = #{emnumbermotordrivers,jdbcType=INTEGER},
+      </if>
+      <if test="emmotorlayout != null">
+        EMMotorlayout = #{emmotorlayout,jdbcType=VARCHAR},
+      </if>
+      <if test="embatterytype != null">
+        EMBatteryType = #{embatterytype,jdbcType=VARCHAR},
+      </if>
+      <if test="empurerange != null">
+        EMPurerange = #{empurerange,jdbcType=VARCHAR},
+      </if>
+      <if test="emenergycontentofbattery != null">
+        EMenergycontentofbattery = #{emenergycontentofbattery,jdbcType=VARCHAR},
+      </if>
+      <if test="em100kmelectricityconsumption != null">
+        EM100kmelectricityconsumption = #{em100kmelectricityconsumption,jdbcType=VARCHAR},
+      </if>
+      <if test="embatterypackwarranty != null">
+        EMBatterypackwarranty = #{embatterypackwarranty,jdbcType=VARCHAR},
+      </if>
+      <if test="emquickcharge != null">
+        EMQuickCharge = #{emquickcharge,jdbcType=VARCHAR},
+      </if>
+      <if test="emslowchargetime != null">
+        EMSlowChargeTime = #{emslowchargetime,jdbcType=VARCHAR},
+      </if>
+      <if test="emfastCharge != null">
+        `EMFast charge` = #{emfastCharge,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EMID = #{emid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Electricmotor">
+    update electricmotor
+    set EMtype = #{emtype,jdbcType=VARCHAR},
+      EMaggregatecapacity = #{emaggregatecapacity,jdbcType=VARCHAR},
+      EMTotaltorque = #{emtotaltorque,jdbcType=VARCHAR},
+      EMMaxpowerfrontmotor = #{emmaxpowerfrontmotor,jdbcType=VARCHAR},
+      EMMaxtorquefrontmotor = #{emmaxtorquefrontmotor,jdbcType=VARCHAR},
+      EMMaxpowerrearmotor = #{emmaxpowerrearmotor,jdbcType=VARCHAR},
+      EMMaxtorquerearmotor = #{emmaxtorquerearmotor,jdbcType=VARCHAR},
+      EMSystemIntegratedPower = #{emsystemintegratedpower,jdbcType=VARCHAR},
+      EMIntegratedtorquesys = #{emintegratedtorquesys,jdbcType=VARCHAR},
+      EMNumbermotordrivers = #{emnumbermotordrivers,jdbcType=INTEGER},
+      EMMotorlayout = #{emmotorlayout,jdbcType=VARCHAR},
+      EMBatteryType = #{embatterytype,jdbcType=VARCHAR},
+      EMPurerange = #{empurerange,jdbcType=VARCHAR},
+      EMenergycontentofbattery = #{emenergycontentofbattery,jdbcType=VARCHAR},
+      EM100kmelectricityconsumption = #{em100kmelectricityconsumption,jdbcType=VARCHAR},
+      EMBatterypackwarranty = #{embatterypackwarranty,jdbcType=VARCHAR},
+      EMQuickCharge = #{emquickcharge,jdbcType=VARCHAR},
+      EMSlowChargeTime = #{emslowchargetime,jdbcType=VARCHAR},
+      `EMFast charge` = #{emfastCharge,jdbcType=VARCHAR}
+    where EMID = #{emid,jdbcType=INTEGER}
+  </update>
+</mapper>

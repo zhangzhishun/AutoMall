@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.AirconditionedrefrigeratorDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Airconditionedrefrigerator">
+    <id column="ARID" jdbcType="INTEGER" property="arid" />
+    <result column="ARACTC" jdbcType="VARCHAR" property="aractc" />
+    <result column="ARBRIAC" jdbcType="VARCHAR" property="arbriac" />
+    <result column="ARRearOutlet" jdbcType="VARCHAR" property="arrearoutlet" />
+    <result column="ARTemperatureDivisionalControl" jdbcType="VARCHAR" property="artemperaturedivisionalcontrol" />
+    <result column="ARVehicleAirPurifier" jdbcType="VARCHAR" property="arvehicleairpurifier" />
+    <result column="ARInsideVehiclePM2_5Filter" jdbcType="VARCHAR" property="arinsidevehiclepm25filter" />
+    <result column="ARNIG" jdbcType="VARCHAR" property="arnig" />
+    <result column="ARICFD" jdbcType="VARCHAR" property="aricfd" />
+    <result column="ARVehicleRefrigerator" jdbcType="VARCHAR" property="arvehiclerefrigerator" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ARID, ARACTC, ARBRIAC, ARRearOutlet, ARTemperatureDivisionalControl, ARVehicleAirPurifier, 
+    ARInsideVehiclePM2_5Filter, ARNIG, ARICFD, ARVehicleRefrigerator
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from airconditionedrefrigerator
+    where ARID = #{arid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from airconditionedrefrigerator
+    where ARID = #{arid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="ARID" keyProperty="arid" parameterType="com.springboot.entity.Airconditionedrefrigerator" useGeneratedKeys="true">
+    insert into airconditionedrefrigerator (ARACTC, ARBRIAC, ARRearOutlet, 
+      ARTemperatureDivisionalControl, ARVehicleAirPurifier, 
+      ARInsideVehiclePM2_5Filter, ARNIG, ARICFD, 
+      ARVehicleRefrigerator)
+    values (#{aractc,jdbcType=VARCHAR}, #{arbriac,jdbcType=VARCHAR}, #{arrearoutlet,jdbcType=VARCHAR}, 
+      #{artemperaturedivisionalcontrol,jdbcType=VARCHAR}, #{arvehicleairpurifier,jdbcType=VARCHAR}, 
+      #{arinsidevehiclepm25filter,jdbcType=VARCHAR}, #{arnig,jdbcType=VARCHAR}, #{aricfd,jdbcType=VARCHAR}, 
+      #{arvehiclerefrigerator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="ARID" keyProperty="arid" parameterType="com.springboot.entity.Airconditionedrefrigerator" useGeneratedKeys="true">
+    insert into airconditionedrefrigerator
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aractc != null">
+        ARACTC,
+      </if>
+      <if test="arbriac != null">
+        ARBRIAC,
+      </if>
+      <if test="arrearoutlet != null">
+        ARRearOutlet,
+      </if>
+      <if test="artemperaturedivisionalcontrol != null">
+        ARTemperatureDivisionalControl,
+      </if>
+      <if test="arvehicleairpurifier != null">
+        ARVehicleAirPurifier,
+      </if>
+      <if test="arinsidevehiclepm25filter != null">
+        ARInsideVehiclePM2_5Filter,
+      </if>
+      <if test="arnig != null">
+        ARNIG,
+      </if>
+      <if test="aricfd != null">
+        ARICFD,
+      </if>
+      <if test="arvehiclerefrigerator != null">
+        ARVehicleRefrigerator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aractc != null">
+        #{aractc,jdbcType=VARCHAR},
+      </if>
+      <if test="arbriac != null">
+        #{arbriac,jdbcType=VARCHAR},
+      </if>
+      <if test="arrearoutlet != null">
+        #{arrearoutlet,jdbcType=VARCHAR},
+      </if>
+      <if test="artemperaturedivisionalcontrol != null">
+        #{artemperaturedivisionalcontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="arvehicleairpurifier != null">
+        #{arvehicleairpurifier,jdbcType=VARCHAR},
+      </if>
+      <if test="arinsidevehiclepm25filter != null">
+        #{arinsidevehiclepm25filter,jdbcType=VARCHAR},
+      </if>
+      <if test="arnig != null">
+        #{arnig,jdbcType=VARCHAR},
+      </if>
+      <if test="aricfd != null">
+        #{aricfd,jdbcType=VARCHAR},
+      </if>
+      <if test="arvehiclerefrigerator != null">
+        #{arvehiclerefrigerator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Airconditionedrefrigerator">
+    update airconditionedrefrigerator
+    <set>
+      <if test="aractc != null">
+        ARACTC = #{aractc,jdbcType=VARCHAR},
+      </if>
+      <if test="arbriac != null">
+        ARBRIAC = #{arbriac,jdbcType=VARCHAR},
+      </if>
+      <if test="arrearoutlet != null">
+        ARRearOutlet = #{arrearoutlet,jdbcType=VARCHAR},
+      </if>
+      <if test="artemperaturedivisionalcontrol != null">
+        ARTemperatureDivisionalControl = #{artemperaturedivisionalcontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="arvehicleairpurifier != null">
+        ARVehicleAirPurifier = #{arvehicleairpurifier,jdbcType=VARCHAR},
+      </if>
+      <if test="arinsidevehiclepm25filter != null">
+        ARInsideVehiclePM2_5Filter = #{arinsidevehiclepm25filter,jdbcType=VARCHAR},
+      </if>
+      <if test="arnig != null">
+        ARNIG = #{arnig,jdbcType=VARCHAR},
+      </if>
+      <if test="aricfd != null">
+        ARICFD = #{aricfd,jdbcType=VARCHAR},
+      </if>
+      <if test="arvehiclerefrigerator != null">
+        ARVehicleRefrigerator = #{arvehiclerefrigerator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ARID = #{arid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Airconditionedrefrigerator">
+    update airconditionedrefrigerator
+    set ARACTC = #{aractc,jdbcType=VARCHAR},
+      ARBRIAC = #{arbriac,jdbcType=VARCHAR},
+      ARRearOutlet = #{arrearoutlet,jdbcType=VARCHAR},
+      ARTemperatureDivisionalControl = #{artemperaturedivisionalcontrol,jdbcType=VARCHAR},
+      ARVehicleAirPurifier = #{arvehicleairpurifier,jdbcType=VARCHAR},
+      ARInsideVehiclePM2_5Filter = #{arinsidevehiclepm25filter,jdbcType=VARCHAR},
+      ARNIG = #{arnig,jdbcType=VARCHAR},
+      ARICFD = #{aricfd,jdbcType=VARCHAR},
+      ARVehicleRefrigerator = #{arvehiclerefrigerator,jdbcType=VARCHAR}
+    where ARID = #{arid,jdbcType=INTEGER}
+  </update>
+</mapper>

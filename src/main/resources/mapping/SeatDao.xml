@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.SeatDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Seat">
+    <id column="SID" jdbcType="INTEGER" property="sid" />
+    <result column="STheSeatMaterial" jdbcType="VARCHAR" property="stheseatmaterial" />
+    <result column="SSportsSeats" jdbcType="VARCHAR" property="ssportsseats" />
+    <result column="SMainSeatAdjustmentMode" jdbcType="VARCHAR" property="smainseatadjustmentmode" />
+    <result column="SViceSeatAdjustmentMode" jdbcType="VARCHAR" property="sviceseatadjustmentmode" />
+    <result column="SSeatMotorControl" jdbcType="VARCHAR" property="sseatmotorcontrol" />
+    <result column="SFrontSeatFunction" jdbcType="VARCHAR" property="sfrontseatfunction" />
+    <result column="SElectricChairMemory" jdbcType="VARCHAR" property="selectricchairmemory" />
+    <result column="STheBackAdjustsViceSeat Button" jdbcType="VARCHAR" property="sthebackadjustsviceseatButton" />
+    <result column="SSecondRowSeatAdjustment" jdbcType="VARCHAR" property="ssecondrowseatadjustment" />
+    <result column="SBackRowSeatFunction" jdbcType="VARCHAR" property="sbackrowseatfunction" />
+    <result column="SBackRowFunctionSeat" jdbcType="VARCHAR" property="sbackrowfunctionseat" />
+    <result column="SBackRowSmallTable" jdbcType="VARCHAR" property="sbackrowsmalltable" />
+    <result column="SSecondRowIndependentSeats" jdbcType="VARCHAR" property="ssecondrowindependentseats" />
+    <result column="SSeatLayout" jdbcType="VARCHAR" property="sseatlayout" />
+    <result column="SBackRowSeatInvertedForm" jdbcType="VARCHAR" property="sbackrowseatinvertedform" />
+    <result column="STheRearSeatElectricallyReclined" jdbcType="VARCHAR" property="stherearseatelectricallyreclined" />
+    <result column="SFrontAndRearCenterHandrail" jdbcType="VARCHAR" property="sfrontandrearcenterhandrail" />
+    <result column="STheRearStand" jdbcType="VARCHAR" property="stherearstand" />
+    <result column="SHeatCoolingCupHolder" jdbcType="VARCHAR" property="sheatcoolingcupholder" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SID, STheSeatMaterial, SSportsSeats, SMainSeatAdjustmentMode, SViceSeatAdjustmentMode, 
+    SSeatMotorControl, SFrontSeatFunction, SElectricChairMemory, `STheBackAdjustsViceSeat Button`, 
+    SSecondRowSeatAdjustment, SBackRowSeatFunction, SBackRowFunctionSeat, SBackRowSmallTable, 
+    SSecondRowIndependentSeats, SSeatLayout, SBackRowSeatInvertedForm, STheRearSeatElectricallyReclined, 
+    SFrontAndRearCenterHandrail, STheRearStand, SHeatCoolingCupHolder
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seat
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from seat
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="SID" keyProperty="sid" parameterType="com.springboot.entity.Seat" useGeneratedKeys="true">
+    insert into seat (STheSeatMaterial, SSportsSeats, SMainSeatAdjustmentMode, 
+      SViceSeatAdjustmentMode, SSeatMotorControl, 
+      SFrontSeatFunction, SElectricChairMemory, 
+      `STheBackAdjustsViceSeat Button`, SSecondRowSeatAdjustment, 
+      SBackRowSeatFunction, SBackRowFunctionSeat, 
+      SBackRowSmallTable, SSecondRowIndependentSeats, 
+      SSeatLayout, SBackRowSeatInvertedForm, 
+      STheRearSeatElectricallyReclined, SFrontAndRearCenterHandrail, 
+      STheRearStand, SHeatCoolingCupHolder)
+    values (#{stheseatmaterial,jdbcType=VARCHAR}, #{ssportsseats,jdbcType=VARCHAR}, #{smainseatadjustmentmode,jdbcType=VARCHAR}, 
+      #{sviceseatadjustmentmode,jdbcType=VARCHAR}, #{sseatmotorcontrol,jdbcType=VARCHAR}, 
+      #{sfrontseatfunction,jdbcType=VARCHAR}, #{selectricchairmemory,jdbcType=VARCHAR}, 
+      #{sthebackadjustsviceseatButton,jdbcType=VARCHAR}, #{ssecondrowseatadjustment,jdbcType=VARCHAR}, 
+      #{sbackrowseatfunction,jdbcType=VARCHAR}, #{sbackrowfunctionseat,jdbcType=VARCHAR}, 
+      #{sbackrowsmalltable,jdbcType=VARCHAR}, #{ssecondrowindependentseats,jdbcType=VARCHAR}, 
+      #{sseatlayout,jdbcType=VARCHAR}, #{sbackrowseatinvertedform,jdbcType=VARCHAR}, 
+      #{stherearseatelectricallyreclined,jdbcType=VARCHAR}, #{sfrontandrearcenterhandrail,jdbcType=VARCHAR}, 
+      #{stherearstand,jdbcType=VARCHAR}, #{sheatcoolingcupholder,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="SID" keyProperty="sid" parameterType="com.springboot.entity.Seat" useGeneratedKeys="true">
+    insert into seat
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stheseatmaterial != null">
+        STheSeatMaterial,
+      </if>
+      <if test="ssportsseats != null">
+        SSportsSeats,
+      </if>
+      <if test="smainseatadjustmentmode != null">
+        SMainSeatAdjustmentMode,
+      </if>
+      <if test="sviceseatadjustmentmode != null">
+        SViceSeatAdjustmentMode,
+      </if>
+      <if test="sseatmotorcontrol != null">
+        SSeatMotorControl,
+      </if>
+      <if test="sfrontseatfunction != null">
+        SFrontSeatFunction,
+      </if>
+      <if test="selectricchairmemory != null">
+        SElectricChairMemory,
+      </if>
+      <if test="sthebackadjustsviceseatButton != null">
+        `STheBackAdjustsViceSeat Button`,
+      </if>
+      <if test="ssecondrowseatadjustment != null">
+        SSecondRowSeatAdjustment,
+      </if>
+      <if test="sbackrowseatfunction != null">
+        SBackRowSeatFunction,
+      </if>
+      <if test="sbackrowfunctionseat != null">
+        SBackRowFunctionSeat,
+      </if>
+      <if test="sbackrowsmalltable != null">
+        SBackRowSmallTable,
+      </if>
+      <if test="ssecondrowindependentseats != null">
+        SSecondRowIndependentSeats,
+      </if>
+      <if test="sseatlayout != null">
+        SSeatLayout,
+      </if>
+      <if test="sbackrowseatinvertedform != null">
+        SBackRowSeatInvertedForm,
+      </if>
+      <if test="stherearseatelectricallyreclined != null">
+        STheRearSeatElectricallyReclined,
+      </if>
+      <if test="sfrontandrearcenterhandrail != null">
+        SFrontAndRearCenterHandrail,
+      </if>
+      <if test="stherearstand != null">
+        STheRearStand,
+      </if>
+      <if test="sheatcoolingcupholder != null">
+        SHeatCoolingCupHolder,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stheseatmaterial != null">
+        #{stheseatmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="ssportsseats != null">
+        #{ssportsseats,jdbcType=VARCHAR},
+      </if>
+      <if test="smainseatadjustmentmode != null">
+        #{smainseatadjustmentmode,jdbcType=VARCHAR},
+      </if>
+      <if test="sviceseatadjustmentmode != null">
+        #{sviceseatadjustmentmode,jdbcType=VARCHAR},
+      </if>
+      <if test="sseatmotorcontrol != null">
+        #{sseatmotorcontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrontseatfunction != null">
+        #{sfrontseatfunction,jdbcType=VARCHAR},
+      </if>
+      <if test="selectricchairmemory != null">
+        #{selectricchairmemory,jdbcType=VARCHAR},
+      </if>
+      <if test="sthebackadjustsviceseatButton != null">
+        #{sthebackadjustsviceseatButton,jdbcType=VARCHAR},
+      </if>
+      <if test="ssecondrowseatadjustment != null">
+        #{ssecondrowseatadjustment,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowseatfunction != null">
+        #{sbackrowseatfunction,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowfunctionseat != null">
+        #{sbackrowfunctionseat,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowsmalltable != null">
+        #{sbackrowsmalltable,jdbcType=VARCHAR},
+      </if>
+      <if test="ssecondrowindependentseats != null">
+        #{ssecondrowindependentseats,jdbcType=VARCHAR},
+      </if>
+      <if test="sseatlayout != null">
+        #{sseatlayout,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowseatinvertedform != null">
+        #{sbackrowseatinvertedform,jdbcType=VARCHAR},
+      </if>
+      <if test="stherearseatelectricallyreclined != null">
+        #{stherearseatelectricallyreclined,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrontandrearcenterhandrail != null">
+        #{sfrontandrearcenterhandrail,jdbcType=VARCHAR},
+      </if>
+      <if test="stherearstand != null">
+        #{stherearstand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheatcoolingcupholder != null">
+        #{sheatcoolingcupholder,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Seat">
+    update seat
+    <set>
+      <if test="stheseatmaterial != null">
+        STheSeatMaterial = #{stheseatmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="ssportsseats != null">
+        SSportsSeats = #{ssportsseats,jdbcType=VARCHAR},
+      </if>
+      <if test="smainseatadjustmentmode != null">
+        SMainSeatAdjustmentMode = #{smainseatadjustmentmode,jdbcType=VARCHAR},
+      </if>
+      <if test="sviceseatadjustmentmode != null">
+        SViceSeatAdjustmentMode = #{sviceseatadjustmentmode,jdbcType=VARCHAR},
+      </if>
+      <if test="sseatmotorcontrol != null">
+        SSeatMotorControl = #{sseatmotorcontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrontseatfunction != null">
+        SFrontSeatFunction = #{sfrontseatfunction,jdbcType=VARCHAR},
+      </if>
+      <if test="selectricchairmemory != null">
+        SElectricChairMemory = #{selectricchairmemory,jdbcType=VARCHAR},
+      </if>
+      <if test="sthebackadjustsviceseatButton != null">
+        `STheBackAdjustsViceSeat Button` = #{sthebackadjustsviceseatButton,jdbcType=VARCHAR},
+      </if>
+      <if test="ssecondrowseatadjustment != null">
+        SSecondRowSeatAdjustment = #{ssecondrowseatadjustment,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowseatfunction != null">
+        SBackRowSeatFunction = #{sbackrowseatfunction,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowfunctionseat != null">
+        SBackRowFunctionSeat = #{sbackrowfunctionseat,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowsmalltable != null">
+        SBackRowSmallTable = #{sbackrowsmalltable,jdbcType=VARCHAR},
+      </if>
+      <if test="ssecondrowindependentseats != null">
+        SSecondRowIndependentSeats = #{ssecondrowindependentseats,jdbcType=VARCHAR},
+      </if>
+      <if test="sseatlayout != null">
+        SSeatLayout = #{sseatlayout,jdbcType=VARCHAR},
+      </if>
+      <if test="sbackrowseatinvertedform != null">
+        SBackRowSeatInvertedForm = #{sbackrowseatinvertedform,jdbcType=VARCHAR},
+      </if>
+      <if test="stherearseatelectricallyreclined != null">
+        STheRearSeatElectricallyReclined = #{stherearseatelectricallyreclined,jdbcType=VARCHAR},
+      </if>
+      <if test="sfrontandrearcenterhandrail != null">
+        SFrontAndRearCenterHandrail = #{sfrontandrearcenterhandrail,jdbcType=VARCHAR},
+      </if>
+      <if test="stherearstand != null">
+        STheRearStand = #{stherearstand,jdbcType=VARCHAR},
+      </if>
+      <if test="sheatcoolingcupholder != null">
+        SHeatCoolingCupHolder = #{sheatcoolingcupholder,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Seat">
+    update seat
+    set STheSeatMaterial = #{stheseatmaterial,jdbcType=VARCHAR},
+      SSportsSeats = #{ssportsseats,jdbcType=VARCHAR},
+      SMainSeatAdjustmentMode = #{smainseatadjustmentmode,jdbcType=VARCHAR},
+      SViceSeatAdjustmentMode = #{sviceseatadjustmentmode,jdbcType=VARCHAR},
+      SSeatMotorControl = #{sseatmotorcontrol,jdbcType=VARCHAR},
+      SFrontSeatFunction = #{sfrontseatfunction,jdbcType=VARCHAR},
+      SElectricChairMemory = #{selectricchairmemory,jdbcType=VARCHAR},
+      `STheBackAdjustsViceSeat Button` = #{sthebackadjustsviceseatButton,jdbcType=VARCHAR},
+      SSecondRowSeatAdjustment = #{ssecondrowseatadjustment,jdbcType=VARCHAR},
+      SBackRowSeatFunction = #{sbackrowseatfunction,jdbcType=VARCHAR},
+      SBackRowFunctionSeat = #{sbackrowfunctionseat,jdbcType=VARCHAR},
+      SBackRowSmallTable = #{sbackrowsmalltable,jdbcType=VARCHAR},
+      SSecondRowIndependentSeats = #{ssecondrowindependentseats,jdbcType=VARCHAR},
+      SSeatLayout = #{sseatlayout,jdbcType=VARCHAR},
+      SBackRowSeatInvertedForm = #{sbackrowseatinvertedform,jdbcType=VARCHAR},
+      STheRearSeatElectricallyReclined = #{stherearseatelectricallyreclined,jdbcType=VARCHAR},
+      SFrontAndRearCenterHandrail = #{sfrontandrearcenterhandrail,jdbcType=VARCHAR},
+      STheRearStand = #{stherearstand,jdbcType=VARCHAR},
+      SHeatCoolingCupHolder = #{sheatcoolingcupholder,jdbcType=VARCHAR}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>

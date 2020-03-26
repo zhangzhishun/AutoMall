@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>查看用户信息</title>
+		<script src="/AutoMall/webjars/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Bootstrap core CSS -->
+		<link href="/AutoMall/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+	可以查看用户的所有信息，以下为部分信息字段样例：
+	<table border="1">
+		<tr>
+			<th>用户ID</th>
+			<th>用户名</th>
+			<th>用户年龄</th>
+			<th>用户性别</th>
+			<th>用户密码</th>
+			<th>用户地址</th>
+		</tr>
+		<tr th:each="o:${user}">
+			<td th:text="${o['userId']}"></td>
+			<td th:text="${o['userName']}"></td>
+			<td th:text="${o['userAge']}"></td>
+			<td th:text="${o['userSex']}"></td>
+			<td th:text="${o['userPassword']}"></td>
+			<td th:text="${o['address']}"></td>
+		</tr>
+	</table>
+	</body>
+
+</html>

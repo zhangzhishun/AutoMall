@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.WheelbrakeDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Wheelbrake">
+    <id column="WBID" jdbcType="INTEGER" property="wbid" />
+    <result column="WBFrontBrakeType" jdbcType="VARCHAR" property="wbfrontbraketype" />
+    <result column="WBRearBrakeType" jdbcType="VARCHAR" property="wbrearbraketype" />
+    <result column="WBCarBrakeType" jdbcType="VARCHAR" property="wbcarbraketype" />
+    <result column="WBFrontTyre" jdbcType="VARCHAR" property="wbfronttyre" />
+    <result column="WBRearTyre" jdbcType="VARCHAR" property="wbreartyre" />
+    <result column="WBSpareTyre" jdbcType="VARCHAR" property="wbsparetyre" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    WBID, WBFrontBrakeType, WBRearBrakeType, WBCarBrakeType, WBFrontTyre, WBRearTyre, 
+    WBSpareTyre
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wheelbrake
+    where WBID = #{wbid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wheelbrake
+    where WBID = #{wbid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="WBID" keyProperty="wbid" parameterType="com.springboot.entity.Wheelbrake" useGeneratedKeys="true">
+    insert into wheelbrake (WBFrontBrakeType, WBRearBrakeType, 
+      WBCarBrakeType, WBFrontTyre, WBRearTyre, 
+      WBSpareTyre)
+    values (#{wbfrontbraketype,jdbcType=VARCHAR}, #{wbrearbraketype,jdbcType=VARCHAR}, 
+      #{wbcarbraketype,jdbcType=VARCHAR}, #{wbfronttyre,jdbcType=VARCHAR}, #{wbreartyre,jdbcType=VARCHAR}, 
+      #{wbsparetyre,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="WBID" keyProperty="wbid" parameterType="com.springboot.entity.Wheelbrake" useGeneratedKeys="true">
+    insert into wheelbrake
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wbfrontbraketype != null">
+        WBFrontBrakeType,
+      </if>
+      <if test="wbrearbraketype != null">
+        WBRearBrakeType,
+      </if>
+      <if test="wbcarbraketype != null">
+        WBCarBrakeType,
+      </if>
+      <if test="wbfronttyre != null">
+        WBFrontTyre,
+      </if>
+      <if test="wbreartyre != null">
+        WBRearTyre,
+      </if>
+      <if test="wbsparetyre != null">
+        WBSpareTyre,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wbfrontbraketype != null">
+        #{wbfrontbraketype,jdbcType=VARCHAR},
+      </if>
+      <if test="wbrearbraketype != null">
+        #{wbrearbraketype,jdbcType=VARCHAR},
+      </if>
+      <if test="wbcarbraketype != null">
+        #{wbcarbraketype,jdbcType=VARCHAR},
+      </if>
+      <if test="wbfronttyre != null">
+        #{wbfronttyre,jdbcType=VARCHAR},
+      </if>
+      <if test="wbreartyre != null">
+        #{wbreartyre,jdbcType=VARCHAR},
+      </if>
+      <if test="wbsparetyre != null">
+        #{wbsparetyre,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Wheelbrake">
+    update wheelbrake
+    <set>
+      <if test="wbfrontbraketype != null">
+        WBFrontBrakeType = #{wbfrontbraketype,jdbcType=VARCHAR},
+      </if>
+      <if test="wbrearbraketype != null">
+        WBRearBrakeType = #{wbrearbraketype,jdbcType=VARCHAR},
+      </if>
+      <if test="wbcarbraketype != null">
+        WBCarBrakeType = #{wbcarbraketype,jdbcType=VARCHAR},
+      </if>
+      <if test="wbfronttyre != null">
+        WBFrontTyre = #{wbfronttyre,jdbcType=VARCHAR},
+      </if>
+      <if test="wbreartyre != null">
+        WBRearTyre = #{wbreartyre,jdbcType=VARCHAR},
+      </if>
+      <if test="wbsparetyre != null">
+        WBSpareTyre = #{wbsparetyre,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WBID = #{wbid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Wheelbrake">
+    update wheelbrake
+    set WBFrontBrakeType = #{wbfrontbraketype,jdbcType=VARCHAR},
+      WBRearBrakeType = #{wbrearbraketype,jdbcType=VARCHAR},
+      WBCarBrakeType = #{wbcarbraketype,jdbcType=VARCHAR},
+      WBFrontTyre = #{wbfronttyre,jdbcType=VARCHAR},
+      WBRearTyre = #{wbreartyre,jdbcType=VARCHAR},
+      WBSpareTyre = #{wbsparetyre,jdbcType=VARCHAR}
+    where WBID = #{wbid,jdbcType=INTEGER}
+  </update>
+</mapper>

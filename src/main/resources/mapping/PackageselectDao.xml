@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.PackageselectDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Packageselect">
+    <id column="PSID" jdbcType="INTEGER" property="psid" />
+    <result column="PSNameAndPrice" jdbcType="VARCHAR" property="psnameandprice" />
+    <result column="PSAppearanceColor" jdbcType="VARCHAR" property="psappearancecolor" />
+    <result column="PSInteriorColor" jdbcType="VARCHAR" property="psinteriorcolor" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    `PSID`, PSNameAndPrice, PSAppearanceColor, PSInteriorColor
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from packageselect
+    where `PSID` = #{psid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from packageselect
+    where `PSID` = #{psid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="PSID" keyProperty="psid" parameterType="com.springboot.entity.Packageselect" useGeneratedKeys="true">
+    insert into packageselect (PSNameAndPrice, PSAppearanceColor, 
+      PSInteriorColor)
+    values (#{psnameandprice,jdbcType=VARCHAR}, #{psappearancecolor,jdbcType=VARCHAR}, 
+      #{psinteriorcolor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="PSID" keyProperty="psid" parameterType="com.springboot.entity.Packageselect" useGeneratedKeys="true">
+    insert into packageselect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="psnameandprice != null">
+        PSNameAndPrice,
+      </if>
+      <if test="psappearancecolor != null">
+        PSAppearanceColor,
+      </if>
+      <if test="psinteriorcolor != null">
+        PSInteriorColor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="psnameandprice != null">
+        #{psnameandprice,jdbcType=VARCHAR},
+      </if>
+      <if test="psappearancecolor != null">
+        #{psappearancecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="psinteriorcolor != null">
+        #{psinteriorcolor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Packageselect">
+    update packageselect
+    <set>
+      <if test="psnameandprice != null">
+        PSNameAndPrice = #{psnameandprice,jdbcType=VARCHAR},
+      </if>
+      <if test="psappearancecolor != null">
+        PSAppearanceColor = #{psappearancecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="psinteriorcolor != null">
+        PSInteriorColor = #{psinteriorcolor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where `PSID` = #{psid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Packageselect">
+    update packageselect
+    set PSNameAndPrice = #{psnameandprice,jdbcType=VARCHAR},
+      PSAppearanceColor = #{psappearancecolor,jdbcType=VARCHAR},
+      PSInteriorColor = #{psinteriorcolor,jdbcType=VARCHAR}
+    where `PSID` = #{psid,jdbcType=INTEGER}
+  </update>
+</mapper>

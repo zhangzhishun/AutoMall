@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.EngineDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Engine">
+    <id column="ENID" jdbcType="INTEGER" property="enid" />
+    <result column="ENModel" jdbcType="VARCHAR" property="enmodel" />
+    <result column="ENDisplacementML" jdbcType="VARCHAR" property="endisplacementml" />
+    <result column="ENDisplacementL" jdbcType="VARCHAR" property="endisplacementl" />
+    <result column="ENAirIntake" jdbcType="VARCHAR" property="enairintake" />
+    <result column="ENCylinderArrangement" jdbcType="VARCHAR" property="encylinderarrangement" />
+    <result column="ENNumberCylinders" jdbcType="INTEGER" property="ennumbercylinders" />
+    <result column="ENNumberValvesPerCylinder" jdbcType="INTEGER" property="ennumbervalvespercylinder" />
+    <result column="ENReductionRatio" jdbcType="VARCHAR" property="enreductionratio" />
+    <result column="ENAdmissionGear" jdbcType="VARCHAR" property="enadmissiongear" />
+    <result column="ENCylinderDiameter" jdbcType="VARCHAR" property="encylinderdiameter" />
+    <result column="ENDistanceRun" jdbcType="DOUBLE" property="endistancerun" />
+    <result column="ENMaximumHorsepower" jdbcType="VARCHAR" property="enmaximumhorsepower" />
+    <result column="ENMaxPower" jdbcType="VARCHAR" property="enmaxpower" />
+    <result column="ENMaximumPowerSpeed" jdbcType="DOUBLE" property="enmaximumpowerspeed" />
+    <result column="ENAcrotOrque" jdbcType="VARCHAR" property="enacrotorque" />
+    <result column="ENMaximumTorqueSpeed" jdbcType="DOUBLE" property="enmaximumtorquespeed" />
+    <result column="ENSpecificTechnology" jdbcType="VARCHAR" property="enspecifictechnology" />
+    <result column="ENFuelForms" jdbcType="VARCHAR" property="enfuelforms" />
+    <result column="ENFuelLabel" jdbcType="VARCHAR" property="enfuellabel" />
+    <result column="ENFuelMode" jdbcType="VARCHAR" property="enfuelmode" />
+    <result column="ENFuelStandards" jdbcType="VARCHAR" property="enfuelstandards" />
+    <result column="ENOilSupply" jdbcType="VARCHAR" property="enoilsupply" />
+    <result column="ENCylinderCoverMaterial" jdbcType="VARCHAR" property="encylindercovermaterial" />
+    <result column="ENCylinderMaterials" jdbcType="VARCHAR" property="encylindermaterials" />
+    <result column="ENEnvironmentalStandards" jdbcType="VARCHAR" property="enenvironmentalstandards" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENID, ENModel, ENDisplacementML, ENDisplacementL, ENAirIntake, ENCylinderArrangement, 
+    ENNumberCylinders, ENNumberValvesPerCylinder, ENReductionRatio, ENAdmissionGear, 
+    ENCylinderDiameter, ENDistanceRun, ENMaximumHorsepower, ENMaxPower, ENMaximumPowerSpeed, 
+    ENAcrotOrque, ENMaximumTorqueSpeed, ENSpecificTechnology, ENFuelForms, ENFuelLabel, 
+    ENFuelMode, ENFuelStandards, ENOilSupply, ENCylinderCoverMaterial, ENCylinderMaterials, 
+    ENEnvironmentalStandards
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from engine
+    where ENID = #{enid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from engine
+    where ENID = #{enid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="ENID" keyProperty="enid" parameterType="com.springboot.entity.Engine" useGeneratedKeys="true">
+    insert into engine (ENModel, ENDisplacementML, ENDisplacementL, 
+      ENAirIntake, ENCylinderArrangement, ENNumberCylinders, 
+      ENNumberValvesPerCylinder, ENReductionRatio, 
+      ENAdmissionGear, ENCylinderDiameter, ENDistanceRun, 
+      ENMaximumHorsepower, ENMaxPower, ENMaximumPowerSpeed, 
+      ENAcrotOrque, ENMaximumTorqueSpeed, ENSpecificTechnology, 
+      ENFuelForms, ENFuelLabel, ENFuelMode, 
+      ENFuelStandards, ENOilSupply, ENCylinderCoverMaterial, 
+      ENCylinderMaterials, ENEnvironmentalStandards
+      )
+    values (#{enmodel,jdbcType=VARCHAR}, #{endisplacementml,jdbcType=VARCHAR}, #{endisplacementl,jdbcType=VARCHAR}, 
+      #{enairintake,jdbcType=VARCHAR}, #{encylinderarrangement,jdbcType=VARCHAR}, #{ennumbercylinders,jdbcType=INTEGER}, 
+      #{ennumbervalvespercylinder,jdbcType=INTEGER}, #{enreductionratio,jdbcType=VARCHAR}, 
+      #{enadmissiongear,jdbcType=VARCHAR}, #{encylinderdiameter,jdbcType=VARCHAR}, #{endistancerun,jdbcType=DOUBLE}, 
+      #{enmaximumhorsepower,jdbcType=VARCHAR}, #{enmaxpower,jdbcType=VARCHAR}, #{enmaximumpowerspeed,jdbcType=DOUBLE}, 
+      #{enacrotorque,jdbcType=VARCHAR}, #{enmaximumtorquespeed,jdbcType=DOUBLE}, #{enspecifictechnology,jdbcType=VARCHAR}, 
+      #{enfuelforms,jdbcType=VARCHAR}, #{enfuellabel,jdbcType=VARCHAR}, #{enfuelmode,jdbcType=VARCHAR}, 
+      #{enfuelstandards,jdbcType=VARCHAR}, #{enoilsupply,jdbcType=VARCHAR}, #{encylindercovermaterial,jdbcType=VARCHAR}, 
+      #{encylindermaterials,jdbcType=VARCHAR}, #{enenvironmentalstandards,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="ENID" keyProperty="enid" parameterType="com.springboot.entity.Engine" useGeneratedKeys="true">
+    insert into engine
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="enmodel != null">
+        ENModel,
+      </if>
+      <if test="endisplacementml != null">
+        ENDisplacementML,
+      </if>
+      <if test="endisplacementl != null">
+        ENDisplacementL,
+      </if>
+      <if test="enairintake != null">
+        ENAirIntake,
+      </if>
+      <if test="encylinderarrangement != null">
+        ENCylinderArrangement,
+      </if>
+      <if test="ennumbercylinders != null">
+        ENNumberCylinders,
+      </if>
+      <if test="ennumbervalvespercylinder != null">
+        ENNumberValvesPerCylinder,
+      </if>
+      <if test="enreductionratio != null">
+        ENReductionRatio,
+      </if>
+      <if test="enadmissiongear != null">
+        ENAdmissionGear,
+      </if>
+      <if test="encylinderdiameter != null">
+        ENCylinderDiameter,
+      </if>
+      <if test="endistancerun != null">
+        ENDistanceRun,
+      </if>
+      <if test="enmaximumhorsepower != null">
+        ENMaximumHorsepower,
+      </if>
+      <if test="enmaxpower != null">
+        ENMaxPower,
+      </if>
+      <if test="enmaximumpowerspeed != null">
+        ENMaximumPowerSpeed,
+      </if>
+      <if test="enacrotorque != null">
+        ENAcrotOrque,
+      </if>
+      <if test="enmaximumtorquespeed != null">
+        ENMaximumTorqueSpeed,
+      </if>
+      <if test="enspecifictechnology != null">
+        ENSpecificTechnology,
+      </if>
+      <if test="enfuelforms != null">
+        ENFuelForms,
+      </if>
+      <if test="enfuellabel != null">
+        ENFuelLabel,
+      </if>
+      <if test="enfuelmode != null">
+        ENFuelMode,
+      </if>
+      <if test="enfuelstandards != null">
+        ENFuelStandards,
+      </if>
+      <if test="enoilsupply != null">
+        ENOilSupply,
+      </if>
+      <if test="encylindercovermaterial != null">
+        ENCylinderCoverMaterial,
+      </if>
+      <if test="encylindermaterials != null">
+        ENCylinderMaterials,
+      </if>
+      <if test="enenvironmentalstandards != null">
+        ENEnvironmentalStandards,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="enmodel != null">
+        #{enmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="endisplacementml != null">
+        #{endisplacementml,jdbcType=VARCHAR},
+      </if>
+      <if test="endisplacementl != null">
+        #{endisplacementl,jdbcType=VARCHAR},
+      </if>
+      <if test="enairintake != null">
+        #{enairintake,jdbcType=VARCHAR},
+      </if>
+      <if test="encylinderarrangement != null">
+        #{encylinderarrangement,jdbcType=VARCHAR},
+      </if>
+      <if test="ennumbercylinders != null">
+        #{ennumbercylinders,jdbcType=INTEGER},
+      </if>
+      <if test="ennumbervalvespercylinder != null">
+        #{ennumbervalvespercylinder,jdbcType=INTEGER},
+      </if>
+      <if test="enreductionratio != null">
+        #{enreductionratio,jdbcType=VARCHAR},
+      </if>
+      <if test="enadmissiongear != null">
+        #{enadmissiongear,jdbcType=VARCHAR},
+      </if>
+      <if test="encylinderdiameter != null">
+        #{encylinderdiameter,jdbcType=VARCHAR},
+      </if>
+      <if test="endistancerun != null">
+        #{endistancerun,jdbcType=DOUBLE},
+      </if>
+      <if test="enmaximumhorsepower != null">
+        #{enmaximumhorsepower,jdbcType=VARCHAR},
+      </if>
+      <if test="enmaxpower != null">
+        #{enmaxpower,jdbcType=VARCHAR},
+      </if>
+      <if test="enmaximumpowerspeed != null">
+        #{enmaximumpowerspeed,jdbcType=DOUBLE},
+      </if>
+      <if test="enacrotorque != null">
+        #{enacrotorque,jdbcType=VARCHAR},
+      </if>
+      <if test="enmaximumtorquespeed != null">
+        #{enmaximumtorquespeed,jdbcType=DOUBLE},
+      </if>
+      <if test="enspecifictechnology != null">
+        #{enspecifictechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuelforms != null">
+        #{enfuelforms,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuellabel != null">
+        #{enfuellabel,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuelmode != null">
+        #{enfuelmode,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuelstandards != null">
+        #{enfuelstandards,jdbcType=VARCHAR},
+      </if>
+      <if test="enoilsupply != null">
+        #{enoilsupply,jdbcType=VARCHAR},
+      </if>
+      <if test="encylindercovermaterial != null">
+        #{encylindercovermaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="encylindermaterials != null">
+        #{encylindermaterials,jdbcType=VARCHAR},
+      </if>
+      <if test="enenvironmentalstandards != null">
+        #{enenvironmentalstandards,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Engine">
+    update engine
+    <set>
+      <if test="enmodel != null">
+        ENModel = #{enmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="endisplacementml != null">
+        ENDisplacementML = #{endisplacementml,jdbcType=VARCHAR},
+      </if>
+      <if test="endisplacementl != null">
+        ENDisplacementL = #{endisplacementl,jdbcType=VARCHAR},
+      </if>
+      <if test="enairintake != null">
+        ENAirIntake = #{enairintake,jdbcType=VARCHAR},
+      </if>
+      <if test="encylinderarrangement != null">
+        ENCylinderArrangement = #{encylinderarrangement,jdbcType=VARCHAR},
+      </if>
+      <if test="ennumbercylinders != null">
+        ENNumberCylinders = #{ennumbercylinders,jdbcType=INTEGER},
+      </if>
+      <if test="ennumbervalvespercylinder != null">
+        ENNumberValvesPerCylinder = #{ennumbervalvespercylinder,jdbcType=INTEGER},
+      </if>
+      <if test="enreductionratio != null">
+        ENReductionRatio = #{enreductionratio,jdbcType=VARCHAR},
+      </if>
+      <if test="enadmissiongear != null">
+        ENAdmissionGear = #{enadmissiongear,jdbcType=VARCHAR},
+      </if>
+      <if test="encylinderdiameter != null">
+        ENCylinderDiameter = #{encylinderdiameter,jdbcType=VARCHAR},
+      </if>
+      <if test="endistancerun != null">
+        ENDistanceRun = #{endistancerun,jdbcType=DOUBLE},
+      </if>
+      <if test="enmaximumhorsepower != null">
+        ENMaximumHorsepower = #{enmaximumhorsepower,jdbcType=VARCHAR},
+      </if>
+      <if test="enmaxpower != null">
+        ENMaxPower = #{enmaxpower,jdbcType=VARCHAR},
+      </if>
+      <if test="enmaximumpowerspeed != null">
+        ENMaximumPowerSpeed = #{enmaximumpowerspeed,jdbcType=DOUBLE},
+      </if>
+      <if test="enacrotorque != null">
+        ENAcrotOrque = #{enacrotorque,jdbcType=VARCHAR},
+      </if>
+      <if test="enmaximumtorquespeed != null">
+        ENMaximumTorqueSpeed = #{enmaximumtorquespeed,jdbcType=DOUBLE},
+      </if>
+      <if test="enspecifictechnology != null">
+        ENSpecificTechnology = #{enspecifictechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuelforms != null">
+        ENFuelForms = #{enfuelforms,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuellabel != null">
+        ENFuelLabel = #{enfuellabel,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuelmode != null">
+        ENFuelMode = #{enfuelmode,jdbcType=VARCHAR},
+      </if>
+      <if test="enfuelstandards != null">
+        ENFuelStandards = #{enfuelstandards,jdbcType=VARCHAR},
+      </if>
+      <if test="enoilsupply != null">
+        ENOilSupply = #{enoilsupply,jdbcType=VARCHAR},
+      </if>
+      <if test="encylindercovermaterial != null">
+        ENCylinderCoverMaterial = #{encylindercovermaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="encylindermaterials != null">
+        ENCylinderMaterials = #{encylindermaterials,jdbcType=VARCHAR},
+      </if>
+      <if test="enenvironmentalstandards != null">
+        ENEnvironmentalStandards = #{enenvironmentalstandards,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ENID = #{enid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Engine">
+    update engine
+    set ENModel = #{enmodel,jdbcType=VARCHAR},
+      ENDisplacementML = #{endisplacementml,jdbcType=VARCHAR},
+      ENDisplacementL = #{endisplacementl,jdbcType=VARCHAR},
+      ENAirIntake = #{enairintake,jdbcType=VARCHAR},
+      ENCylinderArrangement = #{encylinderarrangement,jdbcType=VARCHAR},
+      ENNumberCylinders = #{ennumbercylinders,jdbcType=INTEGER},
+      ENNumberValvesPerCylinder = #{ennumbervalvespercylinder,jdbcType=INTEGER},
+      ENReductionRatio = #{enreductionratio,jdbcType=VARCHAR},
+      ENAdmissionGear = #{enadmissiongear,jdbcType=VARCHAR},
+      ENCylinderDiameter = #{encylinderdiameter,jdbcType=VARCHAR},
+      ENDistanceRun = #{endistancerun,jdbcType=DOUBLE},
+      ENMaximumHorsepower = #{enmaximumhorsepower,jdbcType=VARCHAR},
+      ENMaxPower = #{enmaxpower,jdbcType=VARCHAR},
+      ENMaximumPowerSpeed = #{enmaximumpowerspeed,jdbcType=DOUBLE},
+      ENAcrotOrque = #{enacrotorque,jdbcType=VARCHAR},
+      ENMaximumTorqueSpeed = #{enmaximumtorquespeed,jdbcType=DOUBLE},
+      ENSpecificTechnology = #{enspecifictechnology,jdbcType=VARCHAR},
+      ENFuelForms = #{enfuelforms,jdbcType=VARCHAR},
+      ENFuelLabel = #{enfuellabel,jdbcType=VARCHAR},
+      ENFuelMode = #{enfuelmode,jdbcType=VARCHAR},
+      ENFuelStandards = #{enfuelstandards,jdbcType=VARCHAR},
+      ENOilSupply = #{enoilsupply,jdbcType=VARCHAR},
+      ENCylinderCoverMaterial = #{encylindercovermaterial,jdbcType=VARCHAR},
+      ENCylinderMaterials = #{encylindermaterials,jdbcType=VARCHAR},
+      ENEnvironmentalStandards = #{enenvironmentalstandards,jdbcType=VARCHAR}
+    where ENID = #{enid,jdbcType=INTEGER}
+  </update>
+</mapper>

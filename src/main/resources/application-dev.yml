@@ -1,0 +1,39 @@
+server:
+  port: 8089
+  servlet:
+    context-path: /AutoMall
+
+spring:
+  datasource:
+    url: jdbc:mysql://123.207.171.15:3306/automall?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: hebeidaxue2016.
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+  jackson:
+    #jackson相关配置 设置所有时间返回的规则
+    date-format: yyyy-MM-dd HH:mm:ss
+    #时区必须要设置
+    time-zone: GMT+8
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    cache: false
+    prefix: classpath:/templates/
+
+debug: true
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.springboot.entity
+
+logging:
+  level:
+    com:
+    example:
+    mapper : debug

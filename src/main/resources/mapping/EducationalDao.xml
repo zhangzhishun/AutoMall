@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.EducationalDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Educational">
+    <id column="eduId" jdbcType="INTEGER" property="eduid" />
+    <result column="eduName" jdbcType="VARCHAR" property="eduname" />
+    <result column="eduOther" jdbcType="VARCHAR" property="eduother" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    eduId, eduName, eduOther
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from educational
+    where eduId = #{eduid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from educational
+    where eduId = #{eduid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="eduId" keyProperty="eduid" parameterType="com.springboot.entity.Educational" useGeneratedKeys="true">
+    insert into educational (eduName, eduOther)
+    values (#{eduname,jdbcType=VARCHAR}, #{eduother,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="eduId" keyProperty="eduid" parameterType="com.springboot.entity.Educational" useGeneratedKeys="true">
+    insert into educational
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eduname != null">
+        eduName,
+      </if>
+      <if test="eduother != null">
+        eduOther,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eduname != null">
+        #{eduname,jdbcType=VARCHAR},
+      </if>
+      <if test="eduother != null">
+        #{eduother,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Educational">
+    update educational
+    <set>
+      <if test="eduname != null">
+        eduName = #{eduname,jdbcType=VARCHAR},
+      </if>
+      <if test="eduother != null">
+        eduOther = #{eduother,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eduId = #{eduid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Educational">
+    update educational
+    set eduName = #{eduname,jdbcType=VARCHAR},
+      eduOther = #{eduother,jdbcType=VARCHAR}
+    where eduId = #{eduid,jdbcType=INTEGER}
+  </update>
+</mapper>

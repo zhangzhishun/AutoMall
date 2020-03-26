@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.OrderformDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Orderform">
+    <id column="ofId" jdbcType="INTEGER" property="ofid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="carId" jdbcType="INTEGER" property="carid" />
+    <result column="ofTime" jdbcType="TIMESTAMP" property="oftime" />
+    <result column="ofState" jdbcType="INTEGER" property="ofstate" />
+    <result column="ofComment" jdbcType="VARCHAR" property="ofcomment" />
+    <result column="ofPrice" jdbcType="DECIMAL" property="ofprice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ofId, userId, carId, ofTime, ofState, ofComment, ofPrice
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderform
+    where ofId = #{ofid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByuserId" resultType="java.util.Map">
+        select * from orderform a inner join user b on a.userId = b.userId
+   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderform
+    where ofId = #{ofid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="ofId" keyProperty="ofid" parameterType="com.springboot.entity.Orderform" useGeneratedKeys="true">
+    insert into orderform (userId, carId, ofTime, 
+      ofState, ofComment, ofPrice
+      )
+    values (#{userid,jdbcType=INTEGER}, #{carid,jdbcType=INTEGER}, #{oftime,jdbcType=TIMESTAMP}, 
+      #{ofstate,jdbcType=INTEGER}, #{ofcomment,jdbcType=VARCHAR}, #{ofprice,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="ofId" keyProperty="ofid" parameterType="com.springboot.entity.Orderform" useGeneratedKeys="true">
+    insert into orderform
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="carid != null">
+        carId,
+      </if>
+      <if test="oftime != null">
+        ofTime,
+      </if>
+      <if test="ofstate != null">
+        ofState,
+      </if>
+      <if test="ofcomment != null">
+        ofComment,
+      </if>
+      <if test="ofprice != null">
+        ofPrice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="carid != null">
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="oftime != null">
+        #{oftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ofstate != null">
+        #{ofstate,jdbcType=INTEGER},
+      </if>
+      <if test="ofcomment != null">
+        #{ofcomment,jdbcType=VARCHAR},
+      </if>
+      <if test="ofprice != null">
+        #{ofprice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Orderform">
+    update orderform
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="carid != null">
+        carId = #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="oftime != null">
+        ofTime = #{oftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ofstate != null">
+        ofState = #{ofstate,jdbcType=INTEGER},
+      </if>
+      <if test="ofcomment != null">
+        ofComment = #{ofcomment,jdbcType=VARCHAR},
+      </if>
+      <if test="ofprice != null">
+        ofPrice = #{ofprice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ofId = #{ofid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Orderform">
+    update orderform
+    set userId = #{userid,jdbcType=INTEGER},
+      carId = #{carid,jdbcType=INTEGER},
+      ofTime = #{oftime,jdbcType=TIMESTAMP},
+      ofState = #{ofstate,jdbcType=INTEGER},
+      ofComment = #{ofcomment,jdbcType=VARCHAR},
+      ofPrice = #{ofprice,jdbcType=DECIMAL}
+    where ofId = #{ofid,jdbcType=INTEGER}
+  </update>
+</mapper>

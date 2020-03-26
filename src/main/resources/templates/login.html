@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>登录页</title>
+	<script src="/AutoMall/webjars/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Bootstrap core CSS -->
+	<link href="/AutoMall/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/signin.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<form class="form-signin" action="./login" name="loginForm" method="post">
+	<img class="mb-4" src="./static/img/public/head.png" alt="头像" width="90" height="90">
+	<h1 class="h3 mb-3 font-weight-normal">用户登录</h1>
+	<!--判断-->
+	<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+	<label class="sr-only" >用户ID</label>
+	<input type="text"  name="id" id="id" class="form-control" placeholder="Username" required="" autofocus="">
+	<label class="sr-only">密码</label>
+	<input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
+	<input type="hidden" name="status" id="status"value="user">
+	<div class="checkbox mb-3">
+		<label>
+			<input type="checkbox" value="remember-me"/> 记住密码
+		</label>
+	</div>
+	<button id="btn1" type="button" class="btn btn-primary btn-sm" onClick="userLogin()">登 陆</button>
+</form>
+</body>
+<script type="text/javascript">
+	function userLogin() {
+		//$("#status").attr("value","user");
+		document.loginForm.submit();
+	}
+</script>
+</html>

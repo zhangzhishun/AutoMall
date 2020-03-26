@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.MultimediaconfigDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Multimediaconfig">
+    <id column="MCID" jdbcType="INTEGER" property="mcid" />
+    <result column="MCCentralcontrolcolorLCDscreen" jdbcType="VARCHAR" property="mccentralcontrolcolorlcdscreen" />
+    <result column="MCSizecentralcontrolLCD" jdbcType="VARCHAR" property="mcsizecentralcontrollcd" />
+    <result column="MCGPS" jdbcType="VARCHAR" property="mcgps" />
+    <result column="MCNavigationroadinfodisplay" jdbcType="VARCHAR" property="mcnavigationroadinfodisplay" />
+    <result column="MCRoadrescuecall" jdbcType="VARCHAR" property="mcroadrescuecall" />
+    <result column="MCSplitscreendisplaycentralcontrol" jdbcType="VARCHAR" property="mcsplitscreendisplaycentralcontrol" />
+    <result column="MCCarphone" jdbcType="VARCHAR" property="mccarphone" />
+    <result column="MCMobilephoneinterconnection" jdbcType="VARCHAR" property="mcmobilephoneinterconnection" />
+    <result column="MCSpeechrecognitioncontrol" jdbcType="VARCHAR" property="mcspeechrecognitioncontrol" />
+    <result column="MCGesturecontrol" jdbcType="VARCHAR" property="mcgesturecontrol" />
+    <result column="MCFacerecognition" jdbcType="VARCHAR" property="mcfacerecognition" />
+    <result column="MCVehicleinterconnection" jdbcType="VARCHAR" property="mcvehicleinterconnection" />
+    <result column="MCOTAupgrade" jdbcType="VARCHAR" property="mcotaupgrade" />
+    <result column="MCCarTV" jdbcType="VARCHAR" property="mccartv" />
+    <result column="MCRearLCDscreen" jdbcType="VARCHAR" property="mcrearlcdscreen" />
+    <result column="MCRearcontrolmultimedia" jdbcType="VARCHAR" property="mcrearcontrolmultimedia" />
+    <result column="MCExternalaudiosourceinterfacetype" jdbcType="VARCHAR" property="mcexternalaudiosourceinterfacetype" />
+    <result column="MCNumberUSBinterfaces" jdbcType="VARCHAR" property="mcnumberusbinterfaces" />
+    <result column="MCVehiclemountedVCD" jdbcType="VARCHAR" property="mcvehiclemountedvcd" />
+    <result column="MC220230Power" jdbcType="VARCHAR" property="mc220230power" />
+    <result column="MCTrunk12Vpowerinterface" jdbcType="VARCHAR" property="mctrunk12vpowerinterface" />
+    <result column="MCSpeakerbrandname" jdbcType="VARCHAR" property="mcspeakerbrandname" />
+    <result column="MCNumberspeakers" jdbcType="VARCHAR" property="mcnumberspeakers" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MCID, MCCentralcontrolcolorLCDscreen, MCSizecentralcontrolLCD, MCGPS, MCNavigationroadinfodisplay, 
+    MCRoadrescuecall, MCSplitscreendisplaycentralcontrol, MCCarphone, MCMobilephoneinterconnection, 
+    MCSpeechrecognitioncontrol, MCGesturecontrol, MCFacerecognition, MCVehicleinterconnection, 
+    MCOTAupgrade, MCCarTV, MCRearLCDscreen, MCRearcontrolmultimedia, MCExternalaudiosourceinterfacetype, 
+    MCNumberUSBinterfaces, MCVehiclemountedVCD, MC220230Power, MCTrunk12Vpowerinterface, 
+    MCSpeakerbrandname, MCNumberspeakers
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from multimediaconfig
+    where MCID = #{mcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from multimediaconfig
+    where MCID = #{mcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="MCID" keyProperty="mcid" parameterType="com.springboot.entity.Multimediaconfig" useGeneratedKeys="true">
+    insert into multimediaconfig (MCCentralcontrolcolorLCDscreen, MCSizecentralcontrolLCD, 
+      MCGPS, MCNavigationroadinfodisplay, MCRoadrescuecall, 
+      MCSplitscreendisplaycentralcontrol, MCCarphone, 
+      MCMobilephoneinterconnection, MCSpeechrecognitioncontrol, 
+      MCGesturecontrol, MCFacerecognition, MCVehicleinterconnection, 
+      MCOTAupgrade, MCCarTV, MCRearLCDscreen, 
+      MCRearcontrolmultimedia, MCExternalaudiosourceinterfacetype, 
+      MCNumberUSBinterfaces, MCVehiclemountedVCD, 
+      MC220230Power, MCTrunk12Vpowerinterface, 
+      MCSpeakerbrandname, MCNumberspeakers)
+    values (#{mccentralcontrolcolorlcdscreen,jdbcType=VARCHAR}, #{mcsizecentralcontrollcd,jdbcType=VARCHAR}, 
+      #{mcgps,jdbcType=VARCHAR}, #{mcnavigationroadinfodisplay,jdbcType=VARCHAR}, #{mcroadrescuecall,jdbcType=VARCHAR}, 
+      #{mcsplitscreendisplaycentralcontrol,jdbcType=VARCHAR}, #{mccarphone,jdbcType=VARCHAR}, 
+      #{mcmobilephoneinterconnection,jdbcType=VARCHAR}, #{mcspeechrecognitioncontrol,jdbcType=VARCHAR}, 
+      #{mcgesturecontrol,jdbcType=VARCHAR}, #{mcfacerecognition,jdbcType=VARCHAR}, #{mcvehicleinterconnection,jdbcType=VARCHAR}, 
+      #{mcotaupgrade,jdbcType=VARCHAR}, #{mccartv,jdbcType=VARCHAR}, #{mcrearlcdscreen,jdbcType=VARCHAR}, 
+      #{mcrearcontrolmultimedia,jdbcType=VARCHAR}, #{mcexternalaudiosourceinterfacetype,jdbcType=VARCHAR}, 
+      #{mcnumberusbinterfaces,jdbcType=VARCHAR}, #{mcvehiclemountedvcd,jdbcType=VARCHAR}, 
+      #{mc220230power,jdbcType=VARCHAR}, #{mctrunk12vpowerinterface,jdbcType=VARCHAR}, 
+      #{mcspeakerbrandname,jdbcType=VARCHAR}, #{mcnumberspeakers,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="MCID" keyProperty="mcid" parameterType="com.springboot.entity.Multimediaconfig" useGeneratedKeys="true">
+    insert into multimediaconfig
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mccentralcontrolcolorlcdscreen != null">
+        MCCentralcontrolcolorLCDscreen,
+      </if>
+      <if test="mcsizecentralcontrollcd != null">
+        MCSizecentralcontrolLCD,
+      </if>
+      <if test="mcgps != null">
+        MCGPS,
+      </if>
+      <if test="mcnavigationroadinfodisplay != null">
+        MCNavigationroadinfodisplay,
+      </if>
+      <if test="mcroadrescuecall != null">
+        MCRoadrescuecall,
+      </if>
+      <if test="mcsplitscreendisplaycentralcontrol != null">
+        MCSplitscreendisplaycentralcontrol,
+      </if>
+      <if test="mccarphone != null">
+        MCCarphone,
+      </if>
+      <if test="mcmobilephoneinterconnection != null">
+        MCMobilephoneinterconnection,
+      </if>
+      <if test="mcspeechrecognitioncontrol != null">
+        MCSpeechrecognitioncontrol,
+      </if>
+      <if test="mcgesturecontrol != null">
+        MCGesturecontrol,
+      </if>
+      <if test="mcfacerecognition != null">
+        MCFacerecognition,
+      </if>
+      <if test="mcvehicleinterconnection != null">
+        MCVehicleinterconnection,
+      </if>
+      <if test="mcotaupgrade != null">
+        MCOTAupgrade,
+      </if>
+      <if test="mccartv != null">
+        MCCarTV,
+      </if>
+      <if test="mcrearlcdscreen != null">
+        MCRearLCDscreen,
+      </if>
+      <if test="mcrearcontrolmultimedia != null">
+        MCRearcontrolmultimedia,
+      </if>
+      <if test="mcexternalaudiosourceinterfacetype != null">
+        MCExternalaudiosourceinterfacetype,
+      </if>
+      <if test="mcnumberusbinterfaces != null">
+        MCNumberUSBinterfaces,
+      </if>
+      <if test="mcvehiclemountedvcd != null">
+        MCVehiclemountedVCD,
+      </if>
+      <if test="mc220230power != null">
+        MC220230Power,
+      </if>
+      <if test="mctrunk12vpowerinterface != null">
+        MCTrunk12Vpowerinterface,
+      </if>
+      <if test="mcspeakerbrandname != null">
+        MCSpeakerbrandname,
+      </if>
+      <if test="mcnumberspeakers != null">
+        MCNumberspeakers,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mccentralcontrolcolorlcdscreen != null">
+        #{mccentralcontrolcolorlcdscreen,jdbcType=VARCHAR},
+      </if>
+      <if test="mcsizecentralcontrollcd != null">
+        #{mcsizecentralcontrollcd,jdbcType=VARCHAR},
+      </if>
+      <if test="mcgps != null">
+        #{mcgps,jdbcType=VARCHAR},
+      </if>
+      <if test="mcnavigationroadinfodisplay != null">
+        #{mcnavigationroadinfodisplay,jdbcType=VARCHAR},
+      </if>
+      <if test="mcroadrescuecall != null">
+        #{mcroadrescuecall,jdbcType=VARCHAR},
+      </if>
+      <if test="mcsplitscreendisplaycentralcontrol != null">
+        #{mcsplitscreendisplaycentralcontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="mccarphone != null">
+        #{mccarphone,jdbcType=VARCHAR},
+      </if>
+      <if test="mcmobilephoneinterconnection != null">
+        #{mcmobilephoneinterconnection,jdbcType=VARCHAR},
+      </if>
+      <if test="mcspeechrecognitioncontrol != null">
+        #{mcspeechrecognitioncontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="mcgesturecontrol != null">
+        #{mcgesturecontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="mcfacerecognition != null">
+        #{mcfacerecognition,jdbcType=VARCHAR},
+      </if>
+      <if test="mcvehicleinterconnection != null">
+        #{mcvehicleinterconnection,jdbcType=VARCHAR},
+      </if>
+      <if test="mcotaupgrade != null">
+        #{mcotaupgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="mccartv != null">
+        #{mccartv,jdbcType=VARCHAR},
+      </if>
+      <if test="mcrearlcdscreen != null">
+        #{mcrearlcdscreen,jdbcType=VARCHAR},
+      </if>
+      <if test="mcrearcontrolmultimedia != null">
+        #{mcrearcontrolmultimedia,jdbcType=VARCHAR},
+      </if>
+      <if test="mcexternalaudiosourceinterfacetype != null">
+        #{mcexternalaudiosourceinterfacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="mcnumberusbinterfaces != null">
+        #{mcnumberusbinterfaces,jdbcType=VARCHAR},
+      </if>
+      <if test="mcvehiclemountedvcd != null">
+        #{mcvehiclemountedvcd,jdbcType=VARCHAR},
+      </if>
+      <if test="mc220230power != null">
+        #{mc220230power,jdbcType=VARCHAR},
+      </if>
+      <if test="mctrunk12vpowerinterface != null">
+        #{mctrunk12vpowerinterface,jdbcType=VARCHAR},
+      </if>
+      <if test="mcspeakerbrandname != null">
+        #{mcspeakerbrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="mcnumberspeakers != null">
+        #{mcnumberspeakers,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Multimediaconfig">
+    update multimediaconfig
+    <set>
+      <if test="mccentralcontrolcolorlcdscreen != null">
+        MCCentralcontrolcolorLCDscreen = #{mccentralcontrolcolorlcdscreen,jdbcType=VARCHAR},
+      </if>
+      <if test="mcsizecentralcontrollcd != null">
+        MCSizecentralcontrolLCD = #{mcsizecentralcontrollcd,jdbcType=VARCHAR},
+      </if>
+      <if test="mcgps != null">
+        MCGPS = #{mcgps,jdbcType=VARCHAR},
+      </if>
+      <if test="mcnavigationroadinfodisplay != null">
+        MCNavigationroadinfodisplay = #{mcnavigationroadinfodisplay,jdbcType=VARCHAR},
+      </if>
+      <if test="mcroadrescuecall != null">
+        MCRoadrescuecall = #{mcroadrescuecall,jdbcType=VARCHAR},
+      </if>
+      <if test="mcsplitscreendisplaycentralcontrol != null">
+        MCSplitscreendisplaycentralcontrol = #{mcsplitscreendisplaycentralcontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="mccarphone != null">
+        MCCarphone = #{mccarphone,jdbcType=VARCHAR},
+      </if>
+      <if test="mcmobilephoneinterconnection != null">
+        MCMobilephoneinterconnection = #{mcmobilephoneinterconnection,jdbcType=VARCHAR},
+      </if>
+      <if test="mcspeechrecognitioncontrol != null">
+        MCSpeechrecognitioncontrol = #{mcspeechrecognitioncontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="mcgesturecontrol != null">
+        MCGesturecontrol = #{mcgesturecontrol,jdbcType=VARCHAR},
+      </if>
+      <if test="mcfacerecognition != null">
+        MCFacerecognition = #{mcfacerecognition,jdbcType=VARCHAR},
+      </if>
+      <if test="mcvehicleinterconnection != null">
+        MCVehicleinterconnection = #{mcvehicleinterconnection,jdbcType=VARCHAR},
+      </if>
+      <if test="mcotaupgrade != null">
+        MCOTAupgrade = #{mcotaupgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="mccartv != null">
+        MCCarTV = #{mccartv,jdbcType=VARCHAR},
+      </if>
+      <if test="mcrearlcdscreen != null">
+        MCRearLCDscreen = #{mcrearlcdscreen,jdbcType=VARCHAR},
+      </if>
+      <if test="mcrearcontrolmultimedia != null">
+        MCRearcontrolmultimedia = #{mcrearcontrolmultimedia,jdbcType=VARCHAR},
+      </if>
+      <if test="mcexternalaudiosourceinterfacetype != null">
+        MCExternalaudiosourceinterfacetype = #{mcexternalaudiosourceinterfacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="mcnumberusbinterfaces != null">
+        MCNumberUSBinterfaces = #{mcnumberusbinterfaces,jdbcType=VARCHAR},
+      </if>
+      <if test="mcvehiclemountedvcd != null">
+        MCVehiclemountedVCD = #{mcvehiclemountedvcd,jdbcType=VARCHAR},
+      </if>
+      <if test="mc220230power != null">
+        MC220230Power = #{mc220230power,jdbcType=VARCHAR},
+      </if>
+      <if test="mctrunk12vpowerinterface != null">
+        MCTrunk12Vpowerinterface = #{mctrunk12vpowerinterface,jdbcType=VARCHAR},
+      </if>
+      <if test="mcspeakerbrandname != null">
+        MCSpeakerbrandname = #{mcspeakerbrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="mcnumberspeakers != null">
+        MCNumberspeakers = #{mcnumberspeakers,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MCID = #{mcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Multimediaconfig">
+    update multimediaconfig
+    set MCCentralcontrolcolorLCDscreen = #{mccentralcontrolcolorlcdscreen,jdbcType=VARCHAR},
+      MCSizecentralcontrolLCD = #{mcsizecentralcontrollcd,jdbcType=VARCHAR},
+      MCGPS = #{mcgps,jdbcType=VARCHAR},
+      MCNavigationroadinfodisplay = #{mcnavigationroadinfodisplay,jdbcType=VARCHAR},
+      MCRoadrescuecall = #{mcroadrescuecall,jdbcType=VARCHAR},
+      MCSplitscreendisplaycentralcontrol = #{mcsplitscreendisplaycentralcontrol,jdbcType=VARCHAR},
+      MCCarphone = #{mccarphone,jdbcType=VARCHAR},
+      MCMobilephoneinterconnection = #{mcmobilephoneinterconnection,jdbcType=VARCHAR},
+      MCSpeechrecognitioncontrol = #{mcspeechrecognitioncontrol,jdbcType=VARCHAR},
+      MCGesturecontrol = #{mcgesturecontrol,jdbcType=VARCHAR},
+      MCFacerecognition = #{mcfacerecognition,jdbcType=VARCHAR},
+      MCVehicleinterconnection = #{mcvehicleinterconnection,jdbcType=VARCHAR},
+      MCOTAupgrade = #{mcotaupgrade,jdbcType=VARCHAR},
+      MCCarTV = #{mccartv,jdbcType=VARCHAR},
+      MCRearLCDscreen = #{mcrearlcdscreen,jdbcType=VARCHAR},
+      MCRearcontrolmultimedia = #{mcrearcontrolmultimedia,jdbcType=VARCHAR},
+      MCExternalaudiosourceinterfacetype = #{mcexternalaudiosourceinterfacetype,jdbcType=VARCHAR},
+      MCNumberUSBinterfaces = #{mcnumberusbinterfaces,jdbcType=VARCHAR},
+      MCVehiclemountedVCD = #{mcvehiclemountedvcd,jdbcType=VARCHAR},
+      MC220230Power = #{mc220230power,jdbcType=VARCHAR},
+      MCTrunk12Vpowerinterface = #{mctrunk12vpowerinterface,jdbcType=VARCHAR},
+      MCSpeakerbrandname = #{mcspeakerbrandname,jdbcType=VARCHAR},
+      MCNumberspeakers = #{mcnumberspeakers,jdbcType=VARCHAR}
+    where MCID = #{mcid,jdbcType=INTEGER}
+  </update>
+</mapper>

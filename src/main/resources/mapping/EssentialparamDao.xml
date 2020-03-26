@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.dao.EssentialparamDao">
+  <resultMap id="BaseResultMap" type="com.springboot.entity.Essentialparam">
+    <id column="CEPID" jdbcType="INTEGER" property="cepid" />
+    <result column="CEPFirm" jdbcType="VARCHAR" property="cepfirm" />
+    <result column="CEPLevel" jdbcType="VARCHAR" property="ceplevel" />
+    <result column="CEPEnergyType" jdbcType="VARCHAR" property="cepenergytype" />
+    <result column="CEPEnvironmentalStandards" jdbcType="VARCHAR" property="cepenvironmentalstandards" />
+    <result column="CEPListingTime" jdbcType="VARCHAR" property="ceplistingtime" />
+    <result column="CEPMaxPower" jdbcType="VARCHAR" property="cepmaxpower" />
+    <result column="CEPAcrotOrque" jdbcType="VARCHAR" property="cepacrotorque" />
+    <result column="CEPEngine" jdbcType="VARCHAR" property="cepengine" />
+    <result column="CEPGearBox" jdbcType="VARCHAR" property="cepgearbox" />
+    <result column="CEPLength" jdbcType="DOUBLE" property="ceplength" />
+    <result column="CEPWidth" jdbcType="DOUBLE" property="cepwidth" />
+    <result column="CEPHeight" jdbcType="DOUBLE" property="cepheight" />
+    <result column="CEPBodywork" jdbcType="VARCHAR" property="cepbodywork" />
+    <result column="CEPMaxSpeed" jdbcType="DOUBLE" property="cepmaxspeed" />
+    <result column="CEPOfficial100kmhAcceleration" jdbcType="VARCHAR" property="cepofficial100kmhacceleration" />
+    <result column="CEPMeasured100kmhAcceleration" jdbcType="VARCHAR" property="cepmeasured100kmhacceleration" />
+    <result column="CEPMeasured100kmhBrake" jdbcType="VARCHAR" property="cepmeasured100kmhbrake" />
+    <result column="CEPMIIT" jdbcType="VARCHAR" property="cepmiit" />
+    <result column="CEPMeasuredFuelConsumption" jdbcType="VARCHAR" property="cepmeasuredfuelconsumption" />
+    <result column="CEPVehicleWarranty" jdbcType="VARCHAR" property="cepvehiclewarranty" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CEPID, CEPFirm, CEPLevel, CEPEnergyType, CEPEnvironmentalStandards, CEPListingTime, 
+    CEPMaxPower, CEPAcrotOrque, CEPEngine, CEPGearBox, CEPLength, CEPWidth, CEPHeight, 
+    CEPBodywork, CEPMaxSpeed, CEPOfficial100kmhAcceleration, CEPMeasured100kmhAcceleration, 
+    CEPMeasured100kmhBrake, CEPMIIT, CEPMeasuredFuelConsumption, CEPVehicleWarranty
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from essentialparam
+    where CEPID = #{cepid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from essentialparam
+    where CEPID = #{cepid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="CEPID" keyProperty="cepid" parameterType="com.springboot.entity.Essentialparam" useGeneratedKeys="true">
+    insert into essentialparam (CEPFirm, CEPLevel, CEPEnergyType, 
+      CEPEnvironmentalStandards, CEPListingTime, 
+      CEPMaxPower, CEPAcrotOrque, CEPEngine, 
+      CEPGearBox, CEPLength, CEPWidth, 
+      CEPHeight, CEPBodywork, CEPMaxSpeed, 
+      CEPOfficial100kmhAcceleration, CEPMeasured100kmhAcceleration, 
+      CEPMeasured100kmhBrake, CEPMIIT, CEPMeasuredFuelConsumption, 
+      CEPVehicleWarranty)
+    values (#{cepfirm,jdbcType=VARCHAR}, #{ceplevel,jdbcType=VARCHAR}, #{cepenergytype,jdbcType=VARCHAR}, 
+      #{cepenvironmentalstandards,jdbcType=VARCHAR}, #{ceplistingtime,jdbcType=VARCHAR}, 
+      #{cepmaxpower,jdbcType=VARCHAR}, #{cepacrotorque,jdbcType=VARCHAR}, #{cepengine,jdbcType=VARCHAR}, 
+      #{cepgearbox,jdbcType=VARCHAR}, #{ceplength,jdbcType=DOUBLE}, #{cepwidth,jdbcType=DOUBLE}, 
+      #{cepheight,jdbcType=DOUBLE}, #{cepbodywork,jdbcType=VARCHAR}, #{cepmaxspeed,jdbcType=DOUBLE}, 
+      #{cepofficial100kmhacceleration,jdbcType=VARCHAR}, #{cepmeasured100kmhacceleration,jdbcType=VARCHAR}, 
+      #{cepmeasured100kmhbrake,jdbcType=VARCHAR}, #{cepmiit,jdbcType=VARCHAR}, #{cepmeasuredfuelconsumption,jdbcType=VARCHAR}, 
+      #{cepvehiclewarranty,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="CEPID" keyProperty="cepid" parameterType="com.springboot.entity.Essentialparam" useGeneratedKeys="true">
+    insert into essentialparam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cepfirm != null">
+        CEPFirm,
+      </if>
+      <if test="ceplevel != null">
+        CEPLevel,
+      </if>
+      <if test="cepenergytype != null">
+        CEPEnergyType,
+      </if>
+      <if test="cepenvironmentalstandards != null">
+        CEPEnvironmentalStandards,
+      </if>
+      <if test="ceplistingtime != null">
+        CEPListingTime,
+      </if>
+      <if test="cepmaxpower != null">
+        CEPMaxPower,
+      </if>
+      <if test="cepacrotorque != null">
+        CEPAcrotOrque,
+      </if>
+      <if test="cepengine != null">
+        CEPEngine,
+      </if>
+      <if test="cepgearbox != null">
+        CEPGearBox,
+      </if>
+      <if test="ceplength != null">
+        CEPLength,
+      </if>
+      <if test="cepwidth != null">
+        CEPWidth,
+      </if>
+      <if test="cepheight != null">
+        CEPHeight,
+      </if>
+      <if test="cepbodywork != null">
+        CEPBodywork,
+      </if>
+      <if test="cepmaxspeed != null">
+        CEPMaxSpeed,
+      </if>
+      <if test="cepofficial100kmhacceleration != null">
+        CEPOfficial100kmhAcceleration,
+      </if>
+      <if test="cepmeasured100kmhacceleration != null">
+        CEPMeasured100kmhAcceleration,
+      </if>
+      <if test="cepmeasured100kmhbrake != null">
+        CEPMeasured100kmhBrake,
+      </if>
+      <if test="cepmiit != null">
+        CEPMIIT,
+      </if>
+      <if test="cepmeasuredfuelconsumption != null">
+        CEPMeasuredFuelConsumption,
+      </if>
+      <if test="cepvehiclewarranty != null">
+        CEPVehicleWarranty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cepfirm != null">
+        #{cepfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="ceplevel != null">
+        #{ceplevel,jdbcType=VARCHAR},
+      </if>
+      <if test="cepenergytype != null">
+        #{cepenergytype,jdbcType=VARCHAR},
+      </if>
+      <if test="cepenvironmentalstandards != null">
+        #{cepenvironmentalstandards,jdbcType=VARCHAR},
+      </if>
+      <if test="ceplistingtime != null">
+        #{ceplistingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmaxpower != null">
+        #{cepmaxpower,jdbcType=VARCHAR},
+      </if>
+      <if test="cepacrotorque != null">
+        #{cepacrotorque,jdbcType=VARCHAR},
+      </if>
+      <if test="cepengine != null">
+        #{cepengine,jdbcType=VARCHAR},
+      </if>
+      <if test="cepgearbox != null">
+        #{cepgearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="ceplength != null">
+        #{ceplength,jdbcType=DOUBLE},
+      </if>
+      <if test="cepwidth != null">
+        #{cepwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="cepheight != null">
+        #{cepheight,jdbcType=DOUBLE},
+      </if>
+      <if test="cepbodywork != null">
+        #{cepbodywork,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmaxspeed != null">
+        #{cepmaxspeed,jdbcType=DOUBLE},
+      </if>
+      <if test="cepofficial100kmhacceleration != null">
+        #{cepofficial100kmhacceleration,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmeasured100kmhacceleration != null">
+        #{cepmeasured100kmhacceleration,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmeasured100kmhbrake != null">
+        #{cepmeasured100kmhbrake,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmiit != null">
+        #{cepmiit,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmeasuredfuelconsumption != null">
+        #{cepmeasuredfuelconsumption,jdbcType=VARCHAR},
+      </if>
+      <if test="cepvehiclewarranty != null">
+        #{cepvehiclewarranty,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.entity.Essentialparam">
+    update essentialparam
+    <set>
+      <if test="cepfirm != null">
+        CEPFirm = #{cepfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="ceplevel != null">
+        CEPLevel = #{ceplevel,jdbcType=VARCHAR},
+      </if>
+      <if test="cepenergytype != null">
+        CEPEnergyType = #{cepenergytype,jdbcType=VARCHAR},
+      </if>
+      <if test="cepenvironmentalstandards != null">
+        CEPEnvironmentalStandards = #{cepenvironmentalstandards,jdbcType=VARCHAR},
+      </if>
+      <if test="ceplistingtime != null">
+        CEPListingTime = #{ceplistingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmaxpower != null">
+        CEPMaxPower = #{cepmaxpower,jdbcType=VARCHAR},
+      </if>
+      <if test="cepacrotorque != null">
+        CEPAcrotOrque = #{cepacrotorque,jdbcType=VARCHAR},
+      </if>
+      <if test="cepengine != null">
+        CEPEngine = #{cepengine,jdbcType=VARCHAR},
+      </if>
+      <if test="cepgearbox != null">
+        CEPGearBox = #{cepgearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="ceplength != null">
+        CEPLength = #{ceplength,jdbcType=DOUBLE},
+      </if>
+      <if test="cepwidth != null">
+        CEPWidth = #{cepwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="cepheight != null">
+        CEPHeight = #{cepheight,jdbcType=DOUBLE},
+      </if>
+      <if test="cepbodywork != null">
+        CEPBodywork = #{cepbodywork,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmaxspeed != null">
+        CEPMaxSpeed = #{cepmaxspeed,jdbcType=DOUBLE},
+      </if>
+      <if test="cepofficial100kmhacceleration != null">
+        CEPOfficial100kmhAcceleration = #{cepofficial100kmhacceleration,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmeasured100kmhacceleration != null">
+        CEPMeasured100kmhAcceleration = #{cepmeasured100kmhacceleration,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmeasured100kmhbrake != null">
+        CEPMeasured100kmhBrake = #{cepmeasured100kmhbrake,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmiit != null">
+        CEPMIIT = #{cepmiit,jdbcType=VARCHAR},
+      </if>
+      <if test="cepmeasuredfuelconsumption != null">
+        CEPMeasuredFuelConsumption = #{cepmeasuredfuelconsumption,jdbcType=VARCHAR},
+      </if>
+      <if test="cepvehiclewarranty != null">
+        CEPVehicleWarranty = #{cepvehiclewarranty,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CEPID = #{cepid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.entity.Essentialparam">
+    update essentialparam
+    set CEPFirm = #{cepfirm,jdbcType=VARCHAR},
+      CEPLevel = #{ceplevel,jdbcType=VARCHAR},
+      CEPEnergyType = #{cepenergytype,jdbcType=VARCHAR},
+      CEPEnvironmentalStandards = #{cepenvironmentalstandards,jdbcType=VARCHAR},
+      CEPListingTime = #{ceplistingtime,jdbcType=VARCHAR},
+      CEPMaxPower = #{cepmaxpower,jdbcType=VARCHAR},
+      CEPAcrotOrque = #{cepacrotorque,jdbcType=VARCHAR},
+      CEPEngine = #{cepengine,jdbcType=VARCHAR},
+      CEPGearBox = #{cepgearbox,jdbcType=VARCHAR},
+      CEPLength = #{ceplength,jdbcType=DOUBLE},
+      CEPWidth = #{cepwidth,jdbcType=DOUBLE},
+      CEPHeight = #{cepheight,jdbcType=DOUBLE},
+      CEPBodywork = #{cepbodywork,jdbcType=VARCHAR},
+      CEPMaxSpeed = #{cepmaxspeed,jdbcType=DOUBLE},
+      CEPOfficial100kmhAcceleration = #{cepofficial100kmhacceleration,jdbcType=VARCHAR},
+      CEPMeasured100kmhAcceleration = #{cepmeasured100kmhacceleration,jdbcType=VARCHAR},
+      CEPMeasured100kmhBrake = #{cepmeasured100kmhbrake,jdbcType=VARCHAR},
+      CEPMIIT = #{cepmiit,jdbcType=VARCHAR},
+      CEPMeasuredFuelConsumption = #{cepmeasuredfuelconsumption,jdbcType=VARCHAR},
+      CEPVehicleWarranty = #{cepvehiclewarranty,jdbcType=VARCHAR}
+    where CEPID = #{cepid,jdbcType=INTEGER}
+  </update>
+</mapper>
